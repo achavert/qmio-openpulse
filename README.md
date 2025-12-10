@@ -12,5 +12,5 @@ This is the recommended course flow:
 4. **Example Experiments (examples/)**: a folder with a set of example experiments both in QMIO and simulated backends, using a custom PulseExperiment class.
 
 ## References and acknowledgements
-This content was produced under the QUORUM proyect at the Galician Supercomputing Centre (CESGA).
+This content was produced under the QUORUM project at the Galician Supercomputing Centre (CESGA).
 
