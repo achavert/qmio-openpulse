@@ -6,7 +6,7 @@ This course assumes that you have access to the QMIO HPC nodes at CESGA (through
 
 ## Content
 The material for this course will be in Jupyter Notebooks format (.ipynb), but they will also be available in PDF. <br>
-This is the recommended course flow:
+This are the contents of the course:
 1. **Pulse Control Theory**: introduction to superconducting qubits' physics, drive and measurement.
 2. **OpenPulse Grammar**: introduction to OpenQasm 3.0's OpenPulse grammar and QMIO's implemented features.
 3. **Example Experiments**: a folder with a set of experiment examples with QMIO.
