@@ -1,0 +1,4 @@
+OPENQASM 3;
+defcalgrammar "openpulse";
+x $8;
+measure $8;
