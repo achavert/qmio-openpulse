@@ -5,15 +5,25 @@ on:
     branches:
       - main
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  deploy-book:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-      contents: write
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -22,13 +32,17 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install jupyter-book ghp-import
+          pip install jupyter-book
 
-      - name: Build the book
+      - name: Build book
         run: |
-          jupyter-book build . 
+          jupyter-book build .
 
-      - name: Publish to GitHub Pages
-        uses: DavHau/ghp-import@v1.4.1
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          args: -n -f -o _build/html
+          path: "_build/html"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
