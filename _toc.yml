@@ -1,0 +1,8 @@
+format: jb-book
+root: README.md
+
+chapters:
+  - file: notebooks/1. OpenPulse Grammar/OpenPulse Grammar.ipynb
+  - file: notebooks/3. Pulse Control Theory/Pulse Control Theory.ipynb
+  # uncomment when ready
+  # - file: notebooks/03_section_three

@@ -7,8 +7,9 @@ This course assumes that you have access to the QMIO CPD nodes at CESGA (through
 ## Contents
 
 1. **OpenPulse Grammar**: introduction to OpenQasm 3.0's OpenPulse grammar and QMIO's implemented features.
-2. **Pulse Control Theory**: introduction to superconducting qubits' physics and driving.
-3. **Example Experiments**: a folder with a set of experiment examples with QMIO.
+2. **Qmio Example Experiments**: a folder with a set of experiment examples with QMIO.
+3. **Pulse Control Theory**: introduction to superconducting qubits' physics and driving.
+
 
 The material for this course will be in Jupyter Notebooks format (.ipynb), but they will also be available in PDF.
 
