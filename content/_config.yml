@@ -1,8 +1,5 @@
 title: QMIO OpenPulse Tutorials
 author: Alfredo Chavert Sancho
+only_build_toc_files: true
 execute:
-  execute_notebooks: "off"
-exclude_patterns:
-  - .github
-  - _build
-  - tests
+  execute_notebooks: off
