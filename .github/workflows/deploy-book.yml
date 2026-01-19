@@ -33,10 +33,12 @@ jobs:
 
       - name: Build book
         run: |
-          # 1. Limpieza absoluta
+          # 1. Limpiamos cualquier rastro anterior
           rm -rf _build/
-          # 2. Construcción estándar
-          jupyter-book build .
+          # 2. Instalamos una versión específica para evitar el error EISDIR
+          pip install jupyter-book myst-md
+          # 3. Ejecutamos usando el módulo de Python directamente (más estable)
+          python -m jupyter_book build .
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
