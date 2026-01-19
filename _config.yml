@@ -1,5 +1,7 @@
 title: QMIO OpenPulse Tutorials
 author: Alfredo Chavert Sancho
 execute:
-  execute_notebooks: "off" # Importante: "off" porque ya los tienes ejecutados
-exclude_patterns: [".git", ".github", "_build", "Thumbs.db", ".DS_Store"]
+  execute_notebooks: "off"
+
+# Añade esto para evitar que JB intente leer carpetas del sistema o de la propia build
+exclude_patterns: ["_build", "Thumbs.db", ".DS_Store", ".git", ".github", "venv", ".ipynb_checkpoints"]
