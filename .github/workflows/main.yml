@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-# ESTO ES LO QUE FALTA:
 permissions:
   contents: write
 
@@ -23,11 +22,17 @@ jobs:
       - name: Install dependencies
         run: |
           pip install jupyter-book
-          # Si tus notebooks necesitan librerías para mostrarse (ej. matplotlib), añádelas aquí
+          pip install sphinx-inline-tabs
 
       - name: Build the book
         run: |
-          jupyter-book build .
+          # Forzamos la limpieza y apuntamos al config para evitar que intente leer carpetas como archivos
+          jupyter-book build --all .
+
+      - name: Create .nojekyll
+        run: |
+          # Este paso ahora se asegura de crear el archivo solo si la build tuvo éxito
+          touch _build/html/.nojekyll
 
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v3
