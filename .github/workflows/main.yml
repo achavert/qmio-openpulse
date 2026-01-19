@@ -32,11 +32,11 @@ jobs:
     
       - name: Create .nojekyll
         run: |
-          touch content/_build/html/.nojekyll
+          touch _build/html/.nojekyll
 
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./content/_build/html
+          publish_dir: ./_build/html
 
