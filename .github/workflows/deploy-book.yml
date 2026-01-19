@@ -11,10 +11,7 @@ permissions:
   id-token: write
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  deploy-book:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,20 +22,16 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
           pip install jupyter-book
-          # Instalamos una versión específica de una librería que a veces da el error EISDIR
-          pip install markupsafe==2.0.1
+          # Si necesitas librerías extra para tus notebooks, añádelas aquí
 
-      - name: Build book
-        run: |
-          # 1. Limpiamos cualquier rastro anterior
-          rm -rf _build/
-          # 2. Instalamos una versión específica para evitar el error EISDIR
-          pip install jupyter-book myst-md
-          # 3. Ejecutamos usando el módulo de Python directamente (más estable)
-          python -m jupyter_book build .
+      - name: Build Book
+        # Esta es la acción oficial que evita el error EISDIR
+        uses: executablebooks/jupyter-book-action@v0.1.1
+        with:
+          path_to_book: .
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
