@@ -1,5 +1,5 @@
 format: jb-book
-root: notebooks/01_openpulse_grammar/openpulse_grammar
+root: README
 
 chapters:
   - file: notebooks/01_openpulse_grammar/openpulse_grammar
