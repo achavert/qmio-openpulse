@@ -28,7 +28,7 @@ jobs:
         run: |
           pwd
           ls -la
-          jupyter-book build --all .
+          jupyter-book build --all notebooks/
     
       - name: Create .nojekyll
         run: |
