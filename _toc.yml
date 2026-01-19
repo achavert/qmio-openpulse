@@ -1,5 +1,5 @@
 format: jb-book
-root: README.md
+root: notebooks/1_OpenPulse_Grammar/OpenPulse_Grammar.ipynb
 
 chapters:
   - file: notebooks/1_OpenPulse_Grammar/OpenPulse_Grammar.ipynb
