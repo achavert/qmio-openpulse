@@ -26,13 +26,12 @@ jobs:
 
       - name: Build the book
         run: |
-          # Usamos el comando completo y forzamos la limpieza (--all)
-          # Esto evita el error EISDIR al no dejar archivos temporales previos
+          # Forzamos la limpieza y apuntamos al config para evitar que intente leer carpetas como archivos
           jupyter-book build . --all --config _config.yml
 
       - name: Create .nojekyll
         run: |
-          # Imprescindible para que GitHub Pages no ignore archivos con guion bajo
+          # Este paso ahora se asegura de crear el archivo solo si la build tuvo éxito
           touch _build/html/.nojekyll
 
       - name: GitHub Pages action
