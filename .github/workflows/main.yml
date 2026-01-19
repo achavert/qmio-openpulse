@@ -26,12 +26,13 @@ jobs:
 
       - name: Build the book
         run: |
-          # Usamos jb build para evitar errores de ambigüedad con directorios
-          jb build . --all
+          # Usamos el comando completo y forzamos la limpieza (--all)
+          # Esto evita el error EISDIR al no dejar archivos temporales previos
+          jupyter-book build . --all
 
       - name: Create .nojekyll
         run: |
-          # Esto evita que GitHub intente procesar las carpetas con Jekyll
+          # Imprescindible para que GitHub Pages no ignore archivos con guion bajo
           touch _build/html/.nojekyll
 
       - name: GitHub Pages action
