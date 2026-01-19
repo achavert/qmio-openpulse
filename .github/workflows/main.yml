@@ -28,7 +28,7 @@ jobs:
         run: |
           # Usamos el comando completo y forzamos la limpieza (--all)
           # Esto evita el error EISDIR al no dejar archivos temporales previos
-          jupyter-book build . --all
+          jupyter-book build . --all --config _config.yml
 
       - name: Create .nojekyll
         run: |
