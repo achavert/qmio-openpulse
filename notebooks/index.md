@@ -1,20 +1,22 @@
 ---
 title: Notebooks
 layout: default
+
+notebooks:
+  - title: OpenPulse grammar
+    url: notebooks/01_openpulse_grammar/openpulse_grammar.html
+  - title: Pulse control theory
+    url: notebooks/03_pulse_control_theory/pulse_control_theory.html
 ---
 
 ## Contents
 
 <ul>
-{% for p in site.pages %}
-  {% if p.path contains 'notebooks/' 
-        and p.path contains '.html'
-        and p.url != '/notebooks/' %}
-    <li>
-      <a href="{{ p.url | relative_url }}">
-        {{ p.title | default: p.name }}
-      </a>
-    </li>
-  {% endif %}
+{% for nb in page.notebooks %}
+  <li>
+    <a href="{{ nb.url | relative_url }}">
+      {{ nb.title }}
+    </a>
+  </li>
 {% endfor %}
 </ul>
