@@ -1,0 +1,21 @@
+/* assets/notebook.css */
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: auto;
+  padding: 1em;
+}
+
+div.code_cell {
+  border-radius: 6px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.rendered_html h1, .rendered_html h2, .rendered_html h3 {
+  color: #1a1a1a;
+  margin-top: 1.4em;
+}
