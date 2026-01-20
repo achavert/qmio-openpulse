@@ -1,11 +1,34 @@
-title: Qmio OpenPulse course
+title: QMIO OpenPulse
+description: Documentación y experimentos en OpenPulse y Qiskit
 author: Alfredo Chavert Sancho
 theme: minima
+
 markdown: kramdown
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
+  
 execute:
   execute_notebooks: off
+
 repository:
   url: https://github.com/achavert/qmio-openpulse 
   branch: main 
 
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
 
+collections:
+  notebooks:
+    output: true
+
+defaults:
+  - scope:
+      path: "notebooks"
+    values:
+      layout: default
+
+exclude:
+  - tests
+  - README.md
