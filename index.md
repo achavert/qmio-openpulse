@@ -1,5 +1,5 @@
 # Qubit pulse control with OpenPulse
-A practical introduction to pulse-level control of superconducting qubits with the OpenPulse. 
+A practical introduction to pulse-level control of superconducting qubits with the OpenPulse and Qmio's implemented features.
 
 ## Requirements
 This course assumes that you have access to the QMIO CPD nodes at CESGA (through a @qmio.cesga.es account).
