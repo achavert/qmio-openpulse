@@ -29,7 +29,7 @@ jobs:
         # Find all notebooks in notebooks/ and subdirectories
         find notebooks -name "*.ipynb" | while read nb; do
           echo "Converting $nb"
-          jupyter nbconvert --to html "$nb" --output-dir="$(dirname "$nb")"
+          jupyter nbconvert --to html --template basic "$nb" --output-dir="$(dirname "$nb")"
         done
 
     - name: Commit and Push HTML

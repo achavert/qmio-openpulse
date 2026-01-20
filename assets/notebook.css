@@ -3,22 +3,16 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* =========================
-   Top navigation bar
-   ========================= */
 .top-nav {
   background: #222;
   padding: 10px;
   text-align: center;
 }
-
 .top-nav a {
   color: #fff;
   margin: 0 15px;
   text-decoration: none;
 }
-
 .top-nav a:hover {
   text-decoration: underline;
 }
-
