@@ -3,7 +3,6 @@ description: Documentación y experimentos en OpenPulse y Qiskit
 author: Alfredo Chavert Sancho
 theme: minima
 
-
 markdown: kramdown
 kramdown:
   math_engine: mathjax
