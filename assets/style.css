@@ -23,14 +23,22 @@ body {
   padding: 0 1rem;
 }
 
-nav .nav-logo {
-  margin-left: 200px; 
-  vertical-align: middle; 
-}
-
 .site-footer {
   text-align: center;
   padding: 1rem;
   font-size: 0.9em;
   color: #666;
+}
+
+header nav {
+  display: flex;
+  align-items: center;        /* vertically center items */
+  justify-content: space-between; /* push first items left, last item right */
+  gap: 20px;                  /* optional: space between links */
+}
+
+/* Optional: remove extra spacing for the logo */
+nav .nav-logo {
+  margin-left: 0;             /* no extra margin needed now */
+  height: 40px;               /* adjust logo size if needed */
 }
