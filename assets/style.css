@@ -30,9 +30,7 @@ body {
   color: #666;
 }
 
-
-/* Optional: remove extra spacing for the logo */
 nav .nav-logo {
-  margin-left: 0;             /* no extra margin needed now */
-  height: 40px;               /* adjust logo size if needed */
+  margin-left: 0;             
+  height: 50px;               
 }
