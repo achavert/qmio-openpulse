@@ -5,22 +5,38 @@ body {
   color: #07599C;
 }
 
-.site-header {
-  background: #07599C;
-  color: white;
-  padding: 1rem 2rem;
-}
-
 .header-inner {
   display: flex;
   align-items: center;   
   justify-content: space-between;
 }
 
+.site-header {
+  background: #07599C;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
 .site-header a {
   color: white;
   margin-right: 1rem;
   text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
 }
 
 .content {
@@ -34,11 +50,6 @@ body {
   padding: 1rem;
   font-size: 0.9em;
   color: #666;
-}
-
-nav .nav-logo {
-  margin-left: 0;             
-  height: 40px;               
 }
 
 .nav-logo {
