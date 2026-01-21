@@ -4,9 +4,9 @@ layout: default
 
 notebooks:
   - title: OpenPulse grammar
-    url: notebooks/01_openpulse_grammar/openpulse_grammar.html
+    url: content/openpulse_grammar.html
   - title: Pulse control theory
-    url: notebooks/03_pulse_control_theory/pulse_control_theory.html
+    url: content/pulse_control_theory.html
 ---
 
 ## Contents
