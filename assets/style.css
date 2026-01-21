@@ -5,30 +5,29 @@ body {
   color: #07599C;
 }
 
-.header-inner {
-  display: flex;
-  align-items: center;   
-  justify-content: space-between;
-}
-
 .site-header {
   background: #07599C;
   color: white;
   padding: 1rem 2rem;
 }
 
-.site-header h1 {
+.header-inner {
+  display: flex;
+  align-items: center;   
+  justify-content: space-between;
+}
+
+.site-title {
   margin: 0;
   font-size: 1.6rem;
 }
 
-.site-header a {
+.site-title a {
   color: white;
-  margin-right: 1rem;
   text-decoration: none;
 }
 
-.site-header nav {
+.site-nav {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -38,6 +37,23 @@ body {
   display: flex;
   gap: 1rem;
 }
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.nav-logo {
+  height: 60px;   /* change this value */
+  width: auto;    /* keeps aspect ratio */
+}
+
+/* -------------------------- */
 
 .content {
   max-width: 1000px;
@@ -52,8 +68,5 @@ body {
   color: #666;
 }
 
-.nav-logo {
-  height: 60px;   /* change this value */
-  width: auto;    /* keeps aspect ratio */
-}
+
 
