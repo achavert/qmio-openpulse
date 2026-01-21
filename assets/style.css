@@ -30,12 +30,6 @@ body {
   color: #666;
 }
 
-header nav {
-  display: flex;
-  align-items: center;        /* vertically center items */
-  justify-content: space-between; /* push first items left, last item right */
-  gap: 20px;                  /* optional: space between links */
-}
 
 /* Optional: remove extra spacing for the logo */
 nav .nav-logo {
