@@ -30,7 +30,11 @@ body {
   color: #666;
 }
 
+.nav-logo {
+  height: 100px;   /* change this value */
+  width: auto;    /* keeps aspect ratio */
+}
+
 nav .nav-logo {
-  margin-left: 0;             
-  height: 100px;               
+  margin-left: 0;                          
 }
