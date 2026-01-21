@@ -30,6 +30,11 @@ jobs:
             echo "Converting $nb"
             jupyter nbconvert --to html "$nb" --output-dir="content/"
           done
+
+      - name: Gather notebook media
+        run: |
+          find notebooks -type d -name media -exec find {} -type f -exec cp {} content/media \; \;
+ 
           
 
       - name: Commit generated HTML
