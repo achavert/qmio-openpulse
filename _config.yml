@@ -33,6 +33,5 @@ defaults:
 exclude:
   - tests
   - notebooks
-  - content/html
   - content/markdown
   - README.md
