@@ -8,8 +8,7 @@ body {
 .content {
   max-width: 1500px;
   padding: 0 1rem;
-  justify-content: center;
-
+  text-align: center;
 }
 
 /*------------ Top Navigation Bar --------------*/
