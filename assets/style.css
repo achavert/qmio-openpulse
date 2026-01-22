@@ -5,6 +5,7 @@ body {
   color: #07599C;
 }
 
+/*------------ Top Navigation Bar --------------*/
 .site-header {
   background: #07599C;
   color: white;
@@ -59,7 +60,7 @@ body {
   width: auto;  
 }
 
-/* -------------------------- */
+/*------------ Contents --------------*/
 
 .content {
   max-width: 1000px;
@@ -67,6 +68,88 @@ body {
   padding: 0 1rem;
 }
 
+
+
+
+.notebook-wrapper {
+    display: flex;
+    flex-direction: row; /* Aligns items horizontally */
+    gap: 30px; /* Space between sidebar and notebook */
+    max-width: 100%;
+}
+
+/* 2. The Sidebar: Fixed width on the left */
+.sidebar {
+    width: 250px;       /* Adjust width as needed */
+    flex-shrink: 0;     /* Prevents sidebar from squishing */
+    
+    /* Make it stick to the top of the screen while scrolling */
+    position: sticky; 
+    top: 20px;          /* Distance from top of browser window */
+    max-height: 90vh;   /* Prevent it from being taller than screen */
+    overflow-y: auto;   /* Scroll inside sidebar if list is too long */
+    
+    /* Visual styling for the links */
+    border-right: 1px solid #eaeaea;
+    padding-right: 15px;
+}
+
+/* Remove default bullet points and style links */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #0366d6; /* GitHub Blue */
+    font-size: 14px;
+    display: block;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.sidebar a:hover {
+    background-color: #f6f8fa;
+}
+
+/* 3. The Notebook Area: Takes up remaining space */
+.notebook-content {
+    flex-grow: 1; /* Takes all remaining width */
+    min-width: 0; /* Prevents overflow issues on small screens */
+}
+
+/* Ensure iframe fits perfectly */
+#notebook-frame {
+    width: 100%;
+    height: 100vh; /* Adjust or use JS to resize automatically */
+    border: none;
+}
+
+/* Mobile Responsive: Stack them on small screens */
+@media (max-width: 768px) {
+    .notebook-wrapper {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #eaeaea;
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
+
+/*------------ Site Fotter --------------*/
 .site-footer {
   text-align: center;
   padding: 1rem;
