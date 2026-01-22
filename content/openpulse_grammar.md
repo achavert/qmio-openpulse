@@ -3,4 +3,4 @@ layout: default
 title: OpenPulse grammar
 ---
 
-{% include markdown/openpulse_grammar.md %}
+{% include content/markdown/openpulse_grammar.md %}
