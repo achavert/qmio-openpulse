@@ -24,22 +24,23 @@ jobs:
           python -m pip install --upgrade pip
           pip install jupyter nbconvert
 
-      - name: Convert notebooks recursively to markdown
+      - name: Convert notebooks recursively to HTML
         run: |
           find notebooks -name "*.ipynb" | while read nb; do
             echo "Converting $nb"
-            jupyter nbconvert --to markdown "$nb" --output-dir="content/markdown/"
+            jupyter nbconvert --to html "$nb" --output-dir="content/html/"
           done
 
       - name: Gather notebook media
         run: |
-          find notebooks -type d -name "media" -exec sh -c 'cp -r "$1"/. content/markdown/media/' _ {} \;
+          mkdir -p content/all_media
+          find notebooks -type d -name "media" -exec sh -c 'cp -r "$1"/. content/html/media/' _ {} \;
 
-      - name: Commit generated markdown
+      - name: Commit generated HTML
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add content/markdown/*.md
-          git add content/markdown/media
-          git commit -m "Auto-build notebook markdown" || echo "No changes to commit"
+          git add content/html/*.html
+          git add content/html/media
+          git commit -m "Auto-build notebook HTML" || echo "No changes to commit"
           git push
