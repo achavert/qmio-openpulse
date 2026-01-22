@@ -75,6 +75,7 @@ body {
     display: flex;
     flex-direction: row; /* Aligns items horizontally */
     gap: 30px; /* Space between sidebar and notebook */
+    justify-content: center;
     max-width: 100%;
 }
 
