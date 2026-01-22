@@ -7511,13 +7511,13 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e71a95bd">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0ddb82a2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="OpenPulse-Grammar-(for-Qmio)">OpenPulse Grammar (for Qmio)<a class="anchor-link" href="#OpenPulse-Grammar-(for-Qmio)">¶</a></h1><p>On this notebook, we'll introduce the OpenPulse grammar from OpenQasm 3 for pulse-level control of quantum devices. Each functionality will be followed by some examples and a description of what can be used in Qmio.</p>
+<h1 id="OpenPulse-Grammar-(for-QMIO)">OpenPulse Grammar (for QMIO)<a class="anchor-link" href="#OpenPulse-Grammar-(for-QMIO)">¶</a></h1><p>In this notebook, we'll introduce the OpenPulse grammar from OpenQasm 3 for pulse-level control of quantum devices. Each functionality will be followed by some examples and a description of what can be used in QMIO.</p>
 </div>
 </div>
 </div>
@@ -7528,7 +7528,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Introduction-to-OpenPulse">Introduction to OpenPulse<a class="anchor-link" href="#Introduction-to-OpenPulse">¶</a></h2>
+<h2 id="1.-Introduction-to-OpenPulse">1. Introduction to OpenPulse<a class="anchor-link" href="#1.-Introduction-to-OpenPulse">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7545,10 +7545,10 @@ Inside OpenQASM, there are various grammars in which the instructions can be des
 <br/>
 <br/>
 <strong>What's pulse-level control?</strong><br/>
-In many quantum devices (specially in superconducting qubits like the ones in Qmio), the physical representation of the quantum gates is a driving of the spin system by some external pulse (microwaves signals, oscillatory magnetic fields, laser...). The pulse interacts with the spin and changes its state to de desired outcome for the gate. This pulses are characterized by their amplitude, duration and overall waveform; the desired gates are implemented by adjusting this parameters and, therefore, require calibrations.<br/>
+In many quantum devices (specially in superconducting qubits like the ones in QMIO), the physical representation of the quantum gates is a driving of the spin system by some external pulse (microwaves signals, oscillatory magnetic fields, laser...). The pulse interacts with the spin and changes its state to de desired outcome for the gate. This pulses are characterized by their amplitude, duration and overall waveform; the desired gates are implemented by adjusting this parameters and, therefore, require calibrations.<br/>
 <br/>
 <strong>What does <em>software abstractions</em> mean in OpenPulse?</strong><br/>
-OpenPulse grammar takes the physical concepts of the qubit pulse-driving and sets a series of abstractions to represent them on the code. This abstractions are used to reference the physical channels, characteristics or operations on the qubits, and are defined by the hardware provider, OpenPulse grammar lets us access and operate with them. On this course we'll see each of this functionalities and describe how to use them in Qmio.</p>
+OpenPulse grammar takes the physical concepts of the qubit pulse-driving and sets a series of abstractions to represent them on the code. This abstractions are used to reference the physical channels, characteristics or operations on the qubits, and are defined by the hardware provider, OpenPulse grammar lets us access and operate with them. On this course we'll see each of this functionalities and describe how to use them in QMIO.</p>
 </div>
 </div>
 </div>
@@ -7559,7 +7559,7 @@ OpenPulse grammar takes the physical concepts of the qubit pulse-driving and set
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Creating-a-workspace-with-OpenPulse-and-usage-recommendation">Creating a workspace with OpenPulse and usage recommendation<a class="anchor-link" href="#Creating-a-workspace-with-OpenPulse-and-usage-recommendation">¶</a></h2>
+<h2 id="2.-Creating-a-workspace-for-OpenPulse">2. Creating a workspace for OpenPulse<a class="anchor-link" href="#2.-Creating-a-workspace-for-OpenPulse">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7570,10 +7570,10 @@ OpenPulse grammar takes the physical concepts of the qubit pulse-driving and set
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>First, we're going to establish a workspace to code with OpenPulse. We'll use <strong>Python</strong> to manage the OpenPulse instructions, send them to the real hardware (Qmio) and retrieve the results. The OpenPulse instructions will be stored as python string variables during the code execution, which can be managed in multiple ways.<br/>
+<p>First, we're going to establish a workspace to code with OpenPulse. We'll use <strong>Python</strong> to manage the OpenPulse instructions, send them to the real hardware (QMIO) and retrieve the results. The OpenPulse instructions will be stored as python string variables during the code execution, which can be managed in multiple ways.<br/>
 <br/>
-<strong>How to set up a connection with Qmio?</strong><br/>
-You'll need access to the Qmio CPD nodes with a <strong>@qmio.cesga.es</strong> account. Next, you'll need to load the following modules:<br/>
+<strong>How to set up a connection with QMIO?</strong><br/>
+You'll need access to the QMIO CPD nodes with a <strong>@qmio.cesga.es</strong> account. Next, you'll need to load the following modules:<br/>
 <br/>
 <strong>module load qmio/hpc gcc/12.3.0 pytket/1.23.0-python-3.9.9 qmio-run/0.5.1-python-3.9.9 qiskit/1.2.4-python-3.9.9 qmio-tools/0.2.1-python-3.9.9</strong>
 <br/>
@@ -7605,7 +7605,7 @@ Next, in the python scrip/notebook cell, import and call the QmioRuntimeService 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Now we are ready to send the instructions to Qmio, let's see an example for a simple instruction, later we'll explain how the OpenPulse grammar works. We'll define the set of instructions directly as a python string:</p>
+<p>Now we are ready to send the instructions to QMIO, let's see an example for a simple instruction, later we'll explain how the OpenPulse grammar works. We'll define the set of instructions directly as a python string:</p>
 </div>
 </div>
 </div>
@@ -7636,7 +7636,7 @@ Next, in the python scrip/notebook cell, import and call the QmioRuntimeService 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>To send the instruction to Qmio and retrieve the results we'll use the method <em>QmioRuntimeService.run</em>, which has the following relevant arguments:</p>
+<p>To send the instruction to QMIO and retrieve the results we'll use the method <em>QmioRuntimeService.run</em>, which has the following relevant arguments:</p>
 <ul>
 <li><strong>'circuit'</strong>: OpenPulse instructions, as a character string for our case.</li>
 <li><strong>'shots'</strong>: number of executions for the instructions in the qpu, will determine the number of result items.</li>
@@ -7656,10 +7656,10 @@ Next, in the python scrip/notebook cell, import and call the QmioRuntimeService 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">service</span><span class="o">.</span><span class="n">backend</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"qpu"</span><span class="p">)</span> <span class="k">as</span> <span class="n">backend</span><span class="p">:</span> <span class="c1"># Get the Qmio qpu backend</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">service</span><span class="o">.</span><span class="n">backend</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"qpu"</span><span class="p">)</span> <span class="k">as</span> <span class="n">backend</span><span class="p">:</span> <span class="c1"># Get the QMIO qpu backend</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit</span> <span class="o">=</span> <span class="n">instruction</span><span class="p">,</span> <span class="n">shots</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">,</span> <span class="n">res_format</span> <span class="o">=</span> <span class="s1">'raw'</span><span class="p">)</span> <span class="c1"># Send the instructions and retrieve results</span>
     <span class="k">try</span> <span class="p">:</span>
         <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s2">"results"</span><span class="p">]</span> <span class="c1"># Access numerical values from the job result</span>
@@ -7677,7 +7677,8 @@ Next, in the python scrip/notebook cell, import and call the QmioRuntimeService 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
+<pre>Waiting for resources
+
 Job started</pre>
 </div>
 </div>
@@ -8001,7 +8002,7 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Important</strong>: the job submission at Qmio has a queue system, for which the interactive use with jupyter notebooks is <strong>not recommended</strong>. When the cell with the <em>run</em> method is executed, the job is submitted and will wait until resources are available, the waiting time may depend on the demand. The main problem is that you are not reserving any time of usage when calling the notebook, you only reserve time when the <em>run</em> method is called, this can also bring problems related with the number of job quotas if the method is use multiple times in the notebook.<br/>
+<p><strong>Important</strong>: the job submission at QMIO has a queue system, for which the interactive use with jupyter notebooks is <strong>not recommended</strong>. When the cell with the <em>run</em> method is executed, the job is submitted and will wait until resources are available, the waiting time may depend on the demand. The main problem is that you are not reserving any time of usage when calling the notebook, you only reserve time when the <em>run</em> method is called, this can also bring problems related with the number of job quotas if the method is use multiple times in the notebook.<br/>
 The recommended use is to run a python script, submitting it with sbatch (or srun) and reserving a specific time for the QPU. Especially for experiments with multiple executions.</p>
 </div>
 </div>
@@ -8013,7 +8014,7 @@ The recommended use is to run a python script, submitting it with sbatch (or sru
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="OpenPulse-functions">OpenPulse functions<a class="anchor-link" href="#OpenPulse-functions">¶</a></h2>
+<h2 id="3.-OpenPulse-functions">3. OpenPulse functions<a class="anchor-link" href="#3.-OpenPulse-functions">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8024,7 +8025,7 @@ The recommended use is to run a python script, submitting it with sbatch (or sru
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Calibration-blocks">Calibration blocks<a class="anchor-link" href="#Calibration-blocks">¶</a></h3>
+<h3 id="3.1-Calibration-blocks">3.1 Calibration blocks<a class="anchor-link" href="#3.1-Calibration-blocks">¶</a></h3>
 </div>
 </div>
 </div>
@@ -8087,7 +8088,7 @@ pulse $8;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Ports">Ports<a class="anchor-link" href="#Ports">¶</a></h3>
+<h3 id="3.2-Ports">3.2 Ports<a class="anchor-link" href="#3.2-Ports">¶</a></h3>
 </div>
 </div>
 </div>
@@ -8128,7 +8129,7 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Frames">Frames<a class="anchor-link" href="#Frames">¶</a></h3>
+<h3 id="3.3-Frames">3.3 Frames<a class="anchor-link" href="#3.3-Frames">¶</a></h3>
 </div>
 </div>
 </div>
@@ -8214,7 +8215,7 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Waveforms">Waveforms<a class="anchor-link" href="#Waveforms">¶</a></h3>
+<h3 id="3.4-Waveforms">3.4 Waveforms<a class="anchor-link" href="#3.4-Waveforms">¶</a></h3>
 </div>
 </div>
 </div>
@@ -8231,7 +8232,7 @@ cal {
 <p>
 <p>The <em>waveform</em> variable type from OpenPulse can be expressed as:</p>
 <ul>
-<li><p>An <strong>array of complex values</strong>: the waveform is determined by the complex value of the array in each unit time. In other words, each value of the array determines the pulse's amplitude in each time window of lenght <strong>dt</strong> (minimum time resolution, provided by hardware). A pulse defined by a 100 values array will have length 100dt. This option allows for complex time-dependent waveforms (DRAG for example), but requires to compute the especific complex amplitude for each instant. For Qmio, this <strong>dt</strong> is 0,5ns.
+<li><p>An <strong>array of complex values</strong>: the waveform is determined by the complex value of the array in each unit time. In other words, each value of the array determines the pulse's amplitude in each time window of lenght <strong>dt</strong> (minimum time resolution, provided by hardware). A pulse defined by a 100 values array will have length 100dt. This option allows for complex time-dependent waveforms (DRAG for example), but requires to compute the especific complex amplitude for each instant. For QMIO, this <strong>dt</strong> is 0,5ns.
 <br/></p>
 </li>
 <li><p>An <strong>extern function</strong>: there are some functions already implemented in OpenPulse grammar that can be accessed through the <em>extern</em> function. For all of them, apart from other parameter, the <strong>duration</strong> of the pulse must be especified.</p>
@@ -8248,11 +8249,11 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="1)-constant(duration,-amplitude)">1) constant(duration, amplitude)<a class="anchor-link" href="#1)-constant(duration,-amplitude)">¶</a></h4><ul>
-<li>duration: total pulse duration, by default the float will be read in seconds, but it can be specified the units at the end of it. For example, we can express one nanosecond as follows: 1e-9 (in seconds), 1ns (in nanoseconds) or 2dt (2 time units of the hardware, 0.5ns for Qmio).</li>
-<li>amplitude: the constant amplitude of the pulse, proportional to some hardware defined values for the pulse-generating potential. In Qmio there are limits set by the provider, and the backend will raise an error if the limit is exceded. In general, it should not surpass 1.0, but lower values are recommended to avoid crosstalk, reflections or other fenomena that may happen for high energy pulses.</li>
+<h4 id="constant(duration,-amplitude)">constant(duration, amplitude)<a class="anchor-link" href="#constant(duration,-amplitude)">¶</a></h4><ul>
+<li>duration: total pulse duration, by default the float will be read in seconds, but it can be specified the units at the end of it. For example, we can express one nanosecond as follows: 1e-9 (in seconds), 1ns (in nanoseconds) or 2dt (2 time units of the hardware, 0.5ns for QMIO).</li>
+<li>amplitude: the constant amplitude of the pulse, proportional to some hardware defined values for the pulse-generating potential. In QMIO there are limits set by the provider, and the backend will raise an error if the limit is exceded. In general, it should not surpass 1.0, but lower values are recommended to avoid crosstalk, reflections or other fenomena that may happen for high energy pulses.</li>
 </ul>
-<p><strong>Important</strong>: for Qmio, this function has the argument exchanged from the OpenPulse documentation and the rest of external functions.</p>
+<p><strong>Important</strong>: for QMIO, this function has the argument exchanged from the OpenPulse documentation and the rest of external functions.</p>
 </div>
 </div>
 </div>
@@ -8263,7 +8264,7 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="2)-gaussian(amplitude,-duration,-sigma)">2) gaussian(amplitude, duration, sigma)<a class="anchor-link" href="#2)-gaussian(amplitude,-duration,-sigma)">¶</a></h4><ul>
+<h4 id="gaussian(amplitude,-duration,-sigma)">gaussian(amplitude, duration, sigma)<a class="anchor-link" href="#gaussian(amplitude,-duration,-sigma)">¶</a></h4><ul>
 <li>duration: total duration, same as the constant.</li>
 <li>amplitude: the maximum amplitude of the gaussian profile, which will be met at half the duration of the pulse. The same recommendations are applied to this limits, but be aware that they may vary depending on the waveform.</li>
 <li>sigma: the standard deviation of the gaussian, i.e., the width of the pulse. It can be used to change how flat or dense the pulse is, for example, a big enough sigma will result in a constant pulse. There is a limit on how small the width can be, but may vary depending on the maximim amplitude.</li>
@@ -8278,7 +8279,7 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="3)-sech(amplitude,-duration,-sigma)">3) sech(amplitude, duration, sigma)<a class="anchor-link" href="#3)-sech(amplitude,-duration,-sigma)">¶</a></h4><ul>
+<h4 id="sech(amplitude,-duration,-sigma)">sech(amplitude, duration, sigma)<a class="anchor-link" href="#sech(amplitude,-duration,-sigma)">¶</a></h4><ul>
 <li>duration: total duration.</li>
 <li>amplitude: the maximum amplitude of the profile.</li>
 <li>sigma: the standard deviation of the waveform profile.</li>
@@ -8293,7 +8294,7 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="4)-gaussian_square(amplitude,-duration,-square_width,-sigma)">4) gaussian_square(amplitude, duration, square_width, sigma)<a class="anchor-link" href="#4)-gaussian_square(amplitude,-duration,-square_width,-sigma)">¶</a></h4><ul>
+<h4 id="gaussian_square(amplitude,-duration,-square_width,-sigma)">gaussian_square(amplitude, duration, square_width, sigma)<a class="anchor-link" href="#gaussian_square(amplitude,-duration,-square_width,-sigma)">¶</a></h4><ul>
 <li>duration: total duration.</li>
 <li>amplitude: the maximum amplitude of the profile.</li>
 <li>square_width: the width of the squared waveform component.</li>
@@ -8309,7 +8310,7 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="5)-drag(amplitude,-duration,-sigma,-beta)">5) drag(amplitude, duration, sigma, beta)<a class="anchor-link" href="#5)-drag(amplitude,-duration,-sigma,-beta)">¶</a></h4><ul>
+<h4 id="drag(amplitude,-duration,-sigma,-beta)">drag(amplitude, duration, sigma, beta)<a class="anchor-link" href="#drag(amplitude,-duration,-sigma,-beta)">¶</a></h4><ul>
 <li>duration: total duration.</li>
 <li>amplitude: the maximum amplitude of the profile.</li>
 <li>sigma: the standard deviation of the waveform profile.</li>
@@ -8325,7 +8326,7 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="6)-sine(amplitude,-duration,-frequency,-phase)">6) sine(amplitude, duration, frequency, phase)<a class="anchor-link" href="#6)-sine(amplitude,-duration,-frequency,-phase)">¶</a></h4><ul>
+<h4 id="sine(amplitude,-duration,-frequency,-phase)">sine(amplitude, duration, frequency, phase)<a class="anchor-link" href="#sine(amplitude,-duration,-frequency,-phase)">¶</a></h4><ul>
 <li>duration: total duration.</li>
 <li>amplitude: the maximum amplitude of the profile.</li>
 <li>frequency: the frequency of the sine profile.</li>
@@ -8380,7 +8381,7 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Play">Play<a class="anchor-link" href="#Play">¶</a></h3><p>To schedule the pulses, the instruction <strong>play(frame, waveform)</strong> can be used only inside <em>defcal</em> blocks. In <em>play</em> all the require information for the pulse communitation is contained: port, frequency, time tracking and waveform. Here is a simple example:</p>
+<h3 id="3.5-Play">3.5 Play<a class="anchor-link" href="#3.5-Play">¶</a></h3><p>To schedule the pulses, the instruction <strong>play(frame, waveform)</strong> can be used only inside <em>defcal</em> blocks. In <em>play</em> all the require information for the pulse communitation is contained: port, frequency, time tracking and waveform. Here is a simple example:</p>
 <pre><code>OPENQASM 3;
 defcalgrammar "openpulse";
 
@@ -8405,7 +8406,7 @@ gaussian_pulse $8;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Measurement">Measurement<a class="anchor-link" href="#Measurement">¶</a></h3>
+<h3 id="3.6-Measurement">3.6 Measurement<a class="anchor-link" href="#3.6-Measurement">¶</a></h3>
 </div>
 </div>
 </div>
@@ -8471,7 +8472,8 @@ Let's see an example:</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
+<pre>Waiting for resources
+
 Job started</pre>
 </div>
 </div>
@@ -8575,7 +8577,7 @@ measure $8, $9;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Capture-instruction-(not-working-in-Qmio)">Capture instruction (not working in Qmio)<a class="anchor-link" href="#Capture-instruction-(not-working-in-Qmio)">¶</a></h4>
+<h4 id="Capture-instruction-(not-working-in-QMIO)">Capture instruction (not working in QMIO)<a class="anchor-link" href="#Capture-instruction-(not-working-in-QMIO)">¶</a></h4>
 </div>
 </div>
 </div>
@@ -8586,11 +8588,11 @@ measure $8, $9;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>There are other options in OpenPulse for lower-level measurements, which must have been implemented by the hardware provider. This extern functions can only be used inside <em>defcal</em> blocks, like with the <em>play</em> instruction. Then especific function arguments and outputs should also be especify by the provider, but the acquisition frame is allways needed. Here is a general idea of the usual options and which are implemented in Qmio:</p>
+<p>There are other options in OpenPulse for lower-level measurements, which must have been implemented by the hardware provider. This extern functions can only be used inside <em>defcal</em> blocks, like with the <em>play</em> instruction. Then especific function arguments and outputs should also be especify by the provider, but the acquisition frame is allways needed. Here is a general idea of the usual options and which are implemented in QMIO:</p>
 <ul>
-<li><p><strong>capture_v0(frame)</strong>: the raw output from the measurement, for superconducting qubits, it could be the raw digitalized signal (after the ADG). <strong>Not implemented in Qmio</strong>.</p>
+<li><p><strong>capture_v0(frame)</strong>: the raw output from the measurement, for superconducting qubits, it could be the raw digitalized signal (after the ADG). <strong>Not implemented in QMIO</strong>.</p>
 </li>
-<li><p><strong>capture_v1(frame, filter)&gt;complex[float[32]]</strong>: the IQ value of the measurement, which is a complex number $I+iQ$. The computational states appear in the IQ complex plain as two separated blobs, but also higher energy eigenstates can be seen and measured with this acquision level. <strong>Implemented in Qmio but not working properly</strong>.</p>
+<li><p><strong>capture_v1(frame, filter)&gt;complex[float[32]]</strong>: the IQ value of the measurement, which is a complex number $I+iQ$. The computational states appear in the IQ complex plain as two separated blobs, but also higher energy eigenstates can be seen and measured with this acquision level. <strong>Implemented in QMIO but not working properly</strong>.</p>
 </li>
 <li><p><strong>capture_v2(frame, filter)&gt;bit</strong>: the discriminated bit from the measurement.</p>
 </li>
@@ -8625,7 +8627,7 @@ measure $8;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Time">Time<a class="anchor-link" href="#Time">¶</a></h3><p>As we saw before, each qubit frame keeps track independently of its time to automatically adjust the pulses with the physical rotation frame. This means that each qubit has an internal clock with a time variable that need to be syncronize in order to perform operations with multiple qubits. OpenPulse grammar has tools to delay and syncronize this clocks.<br/>
+<h3 id="3.7-Time">3.7 Time<a class="anchor-link" href="#3.7-Time">¶</a></h3><p>As we saw before, each qubit frame keeps track independently of its time to automatically adjust the pulses with the physical rotation frame. This means that each qubit has an internal clock with a time variable that need to be syncronize in order to perform operations with multiple qubits. OpenPulse grammar has tools to delay and syncronize this clocks.<br/>
 Firstly, there are other functions that make the clock advance, these include any <em>decal</em> blocks, <em>play</em> or <em>capture</em> instructions. By default, <em>cal</em> blocks don't make the clock advance, as they are set before the instruction execution.<br/>
 <br/>
 The <strong>delay[time] frame</strong> instruction makes the clock advance by a set time. You can either delay an especific frame from the qubit:</p>
