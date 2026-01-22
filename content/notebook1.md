@@ -1,6 +1,5 @@
 ---
-layout: default
 title: OpenPulse grammar
+layout: default
 ---
 
-{% include openpulse_grammar.md %}
