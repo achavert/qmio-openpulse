@@ -5,6 +5,11 @@ body {
   color: #07599C;
 }
 
+.content {
+  max-width: 1500px;
+  padding: 0 1rem;
+}
+
 /*------------ Top Navigation Bar --------------*/
 .site-header {
   background: #07599C;
@@ -62,11 +67,7 @@ body {
 
 /*------------ Contents --------------*/
 
-.content {
-  max-width: 1500px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
+
 
 .notebook-wrapper {
     display: flex;
