@@ -34,6 +34,46 @@
   <p>© {{ site.time | date: '%Y' }} – QUORUM, Galician Supercomputing Centre</p>
 </footer>
 
+
+<script>
+document.getElementById('notebook-frame').onload = function() {
+    const iframe = document.getElementById('notebook-frame');
+    // Access the document inside the iframe
+    const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    
+    // Select headers (adjust H1/H2/H3 based on your notebook structure)
+    const headers = innerDoc.querySelectorAll('h1, h2, h3');
+    const navContainer = document.getElementById('sidebar-nav');
+    
+    const ul = document.createElement('ul');
+
+    headers.forEach((header, index) => {
+        // Ensure the header has an ID for linking
+        if (!header.id) {
+            header.id = 'section-' + index;
+        }
+
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        
+        a.textContent = header.innerText;
+        a.href = '#';
+        a.style.cursor = 'pointer';
+
+        // When clicked, scroll the IFRAME, not the main window
+        a.onclick = (e) => {
+            e.preventDefault();
+            header.scrollIntoView({ behavior: 'smooth' });
+        };
+
+        li.appendChild(a);
+        ul.appendChild(li);
+    });
+
+    navContainer.appendChild(ul);
+};
+</script>
+
 </body>
 </html>
 
