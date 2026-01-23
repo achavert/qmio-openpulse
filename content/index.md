@@ -14,7 +14,7 @@ layout: default
 #### Qubit espectroscopy examples
 
 ### 2. Single qubit pulse control
-#### Pulses qubit drive
+#### Qubit pulse driving
 #### Rabi oscillations and pulse gates
 #### Pulse waveforms
 #### Qubit driving with OpenPulse
