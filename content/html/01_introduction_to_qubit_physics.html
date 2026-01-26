@@ -7605,6 +7605,92 @@ where $\omega_q=\omega_{01}$ is the resonance frequency and $\alpha=\omega_{12}-
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The models from before assumed that the qubit is an isolated system, meaning that there are no interactions with its environment, so its energy remains constant. This is far from reality, as there are very relevant effects that are expected for an oscillator in a thermal bath. In superconducting computers, the qubits are immersed in a very cold thermal bath, on the order of tens to hundreds of mK, achieved by various cryogenic systems. The objective is to reduce the probability that a residual photon in the cavity with energy $\hbar\omega_q$ interacts with the qubit. Defining $k_BT$ as the mean energy of the interactions in a photonic bath at temperature $T$, the regime where the isolated approximation is valid is when $k_BT\ll \hbar\omega_q$. Nevertheless, there will always be a residual population for any excited states, given by the Gibbs thermal state:
+$$P_n=\frac{1}{Z}\exp\left(-\frac{\hbar\omega_n}{k_BT}\right),$$
+where $\hbar\omega_n$ is the energy of the eigenstate $\ket{n}$ and $Z$ is the partition function given by:
+$$Z=\sum_{n=0}^\infty \exp\left(-\frac{\hbar\omega_n}{k_BT}\right).$$</p>
+<p>In other words, the cold thermal bath will bring the qubit to some state very close to $\ket{0}$, with residual excited populations, from which we can operate assuming that we are working with an isolated qubit, applying the pulses to perform the desired gates in our computations. This is why the computational state $\ket{0}$ was conveniently chosen to be the ground-state and also the default initialization in many quantum circuit formalisms.<br/>
+<br/>
+Some interesting questions may arise: How does the qubit system evolve during this cooling? Does the thermal bath have a relevant effect on the qubit during the computations?<br/>
+This cooling process is called <strong>thermalization</strong> and it can be modeled using the Lindblad equations. This method consists of modeling the possible interactions of the bath's photons with the qubit, dividing them in three types:</p>
+<ul>
+<li><strong>Excitation</strong>: a photon with energy $\hbar\omega_q$ interacts with the qubit, increasing its energy.</li>
+<li><strong>Relaxation</strong>: the qubit spontaneously emits a photon of energy $\hbar\omega_q$ to the bath, decreasing its energy.</li>
+<li><strong>Dephasing</strong>: the energy of the qubit remains the same, but the relative phase of its state shifts.</li>
+</ul>
+<p>Each of this interactions has a probability of happening that depends on the bath's temperature, for example, a very warm bath will have a greater excitation probability, as its photons are more energetic. These probabilities can be parametrized by the <strong>relaxation times</strong>:</p>
+<ul>
+<li>$T_1$: the <strong>longitudinal</strong> relaxation time, which is related to the balance between excitation and relaxation interactions.</li>
+<li>$T_2$: the <strong>tranverse</strong> relaxation time, which includes the effect of the dephasing interactions.</li>
+</ul>
+<p>For a system in an arbitrary mixed state:
+$$\rho(0)=\begin{pmatrix}
+\rho_{00}(0) &amp; \rho_{01}(0)\\
+\rho_{10}(0) &amp; \rho_{11}(0)
+\end{pmatrix},$$
+the differential equation derived from the Lindblad equations has the following solution for the qubit state at any time $t$:
+$$\rho(t)=\begin{pmatrix}
+\rho_{00}^{eq} +\Bigl(\rho_{00}(0)-\rho_{00}^{eq}\Bigl)e^{-t/T_1} &amp; \rho_{01}(0)e^{-t/T_2}e^{i\omega_q t}\\
+\rho_{10}(0)e^{-t/T_2}e^{-i\omega_q t} &amp; \rho_{11}^{eq} +\Bigl(\rho_{11}(0)-\rho_{11}^{eq}\Bigl)e^{-t/T_1}
+\end{pmatrix},$$
+where $\rho^{(eq)}$ also depends on the bath's temperature. In fact, if we take the time limit:
+$$\rho^{(eq)}=\lim_{t\rightarrow\infty}\rho(t)=\begin{pmatrix}
+\rho_{00}^{eq} &amp;0\\
+0 &amp; \rho_{11}^{eq}
+\end{pmatrix},$$
+that corresponds to the Gibbs state from before:
+$$
+\begin{align*}
+\rho_{00}^{eq} =  \frac{1}{Z}\exp\left(-\frac{\hbar\omega_0}{k_BT}\right),\quad
+\rho_{11}^{eq} =  \frac{1}{Z}\exp\left(-\frac{\hbar\omega_1}{k_BT}\right).
+\end{align*}
+$$
+This means that, for an arbitrary initial state, the qubit will decay to the Gibbs thermal state in some time parametrized by the relaxation time $T_1$ and $T_2$. This decay not only affecs its populations, it also changes its phase in an spiral-like form. Here there is an illustrative video of the process, for the initial state $\ket{+}$:</p>
+<div style="text-align: center;">
+<video controls="" height="480" width="720">
+<source src="./media/BlochDecayScene.mp4" type="video/mp4"/>
+    Tu navegador no soporta el video.
+  </video>
+</div>
+<p>As you can see, the state of the qubit (red dot) evolves in an spiraling decay (yellow curve) to some mixed state near $\ket{0}$, for a cold thermal bath. The blue sphere represents the norm of the state in the Bloch sphere, that is, its purity. At first, the sudden loss of purity would mean a loss of coherence if it happens during a computation, as we have lost track of the qubit's state. On the other hand, after enough time, the qubit state purity increases again until it reaches some asymptotic limit on the Gibbs state. This can be understood as the <strong>initialization</strong> of the qubit after a computation. In other words, the thermalization of the qubit let's us initialized a hopefully almost pure $\ket{0}$ state from where the computations can be performed with coherence, but it also limits the time on which operations can be performed, as it will keep interacting with the qubit, changing its state in a non-unitary fashion. This operational time, called <strong>coherence time</strong> is characterized by the relaxation times from before, and limits the amount of time, and so the number of operations, we can operate on the qubit.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d3d81f7d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=60f8dffc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0fc34c82">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>
