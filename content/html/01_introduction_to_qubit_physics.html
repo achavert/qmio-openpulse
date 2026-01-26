@@ -7553,7 +7553,7 @@ $ \newcommand{\bn}{{\bf n}} $</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5c19dba8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2872ee6b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7561,9 +7561,18 @@ $ \newcommand{\bn}{{\bf n}} $</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>A <strong>qubit</strong> is any system that can be escribed by a two-dimensional Hilbert space, $\mathbb{C}^2$. Usually, we denote by $\{\ket{0},\ket{1}\}$ an orthonormal basis, so any arbitrary <strong>qubit state</strong> can be described as:
 $$\ket{\psi}=\alpha\ket{0}+\beta\ket{1};\quad\alpha,\beta\in\mathbb{C},\ |\alpha|^2+|\beta|^2=1. $$
-From here, we can derive all the arithmetic used in quantum computing, but the focus of this course will be on how to encode this space in a real physical system and how to implement the unitary gates used in quantum circuits. Specifically, we'll see how the qubits are encoded it transmons, also called charge-qubits.<br/>
-<br/>
-The LC circuit is a basic case where we can define a qubit, this circuit consists on a capacitor and an inductor that exchange their electric and magnetic energies in the same way as a harmonic oscillator. In fact, for the superconducting regime of an LC circuit, we can describe its energy as a quantum harmonic oscillator (QHO):
+From here, we can derive all the arithmetic used in quantum computing, but the focus of this course will be on how to encode this space in a real physical system and how to implement the unitary gates used in quantum circuits. Specifically, we'll see how the qubits are encoded it transmons, also called charge-qubits.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5c19dba8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Encoding-a-qubit-in-superconducting-circuits">Encoding a qubit in superconducting circuits<a class="anchor-link" href="#Encoding-a-qubit-in-superconducting-circuits">¶</a></h3><p>The superconducting LC circuit is a basic case where we can define a qubit, this circuit consists on a capacitor and an inductor that exchange their electric and magnetic energies in the same way as a harmonic oscillator. In fact, we can describe its energy as a quantum harmonic oscillator (QHO):
 $$H_{LC}=\hbar\omega_q\left(a^\dagger a+\frac{1}{2}\right),$$
 where $\omega_q$ is called the <strong>resonance frequency</strong>. As it's well known, the QHO has an infinite number of energy eigenstates $H_{LC}\ket{n}=E_n\ket{n}=\hbar\omega_q\left(n+1/2\right)$.<br/>
 <br/>
@@ -7584,6 +7593,27 @@ with $\omega_q=\omega_{01}$.<br/>
 Nevertheless, it could be interesting to study the effects of higher excited states. The transmon system is usually modeled as a Duffing oscillator:
 $$H=\hbar\omega_qa^\dagger a+\frac{\hbar\alpha}{2}a^\dagger a^\dagger a a,$$
 where $\omega_q=\omega_{01}$ is the resonance frequency and $\alpha=\omega_{12}-\omega_{01}&lt;0$ is the <strong>anharmonicity</strong> of the qubit.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0a7ab17a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="The-qubit-rotating-frame">The qubit rotating frame<a class="anchor-link" href="#The-qubit-rotating-frame">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=83c9dabe">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
@@ -7659,44 +7689,6 @@ This means that, for an arbitrary initial state, the qubit will decay to the Gib
 <p>As you can see, the state of the qubit (red dot) evolves in an spiraling decay (yellow curve) to some mixed state near $\ket{0}$, for a cold thermal bath. The blue sphere represents the norm of the state in the Bloch sphere, that is, its purity. At first, the sudden loss of purity would mean a loss of coherence if it happens during a computation, as we have lost track of the qubit's state. <br/>
 <br/>
 On the other hand, after enough time, the qubit state purity increases again until it reaches some asymptotic limit on the Gibbs state. This can be understood as the <strong>initialization</strong> of the qubit after a computation. In other words, the thermalization of the qubit let's us initialized a hopefully almost pure $\ket{0}$ state from where the computations can be performed with coherence, but it also limits the time on which operations can be performed, as it will keep interacting with the qubit, changing its state in a non-unitary fashion. This operational time, called <strong>coherence time</strong> is characterized by the relaxation times from before, and limits the amount of time, and so the number of operations, we can operate on the qubit.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d3d81f7d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=60f8dffc">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0fc34c82">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
 </div>
 </div>
 </div>
