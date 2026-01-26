@@ -7686,7 +7686,7 @@ where $E_C=e^2/(2C)$, with $C$ the total capacitance of the circuit, and $E_J=I_
 <p>The Josephson circuit we have studied until now composes a familly of electromagnetic quantum circuits with different properties. The main difference between them is produced by the $E_J/E_C$ ratio of energies. The regime we are interested in, the one used in charge superconducting qubits, also called <strong>transmon</strong>, is $E_J\gg E_C$, which is less sensitive to charge noise. This can be achieved by incresing the capacitance of the capacitor. In this limit, the superconducting phase $\phi$ is small and we can approximate it by a non-linear potential well:
 $$E_J\cos\phi = \frac{1}{2} E_J\phi^2 -\frac{1}{24}E_J\phi^4+\mathcal{O}(\phi^6).$$
 This system can be model with a Duffing oscillator:
-$$H=\hbar\omega_qa^\dagger+\frac{\hbar\alpha}{2}a^\dagger a^\dagger a a,$$
+$$H=\hbar\omega_qa^\dagger a+\frac{\hbar\alpha}{2}a^\dagger a^\dagger a a,$$
 where $\omega_q = (\sqrt{8E_J E_C}-E_C)/\hbar$ is the frequency for the $g\rightarrow e$ transition and $\alpha = \omega_q^{e\rightarrow f}-\omega_q^{g\rightarrow e}=-E_C&lt;0$ is the <strong>anharmonicity</strong> of the transmon. As we are in the regime with $E_C\gg E_J$, we have that $|\alpha| \ll \omega_q$, which corresponds to a weekly anharmonic oscilator (AHO).<br/>
 <br/>
 Generally, $|\alpha| \ll \omega_q$ lets us ommit the terms corresponding to the anharmonicity, leaving a simpler Hamiltonian:
