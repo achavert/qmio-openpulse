@@ -7798,7 +7798,7 @@ measure $8;
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
-<li><strong>Use f-strings</strong>: another option is to use the f-string from python to easily change the OpenPulse script. This is especially useful when we want to execute the same instructions with some variant parameters that are stored as pyhton variables. It can also be used for python scripts and interactive notebooks. To do this, you just need to write the 'f' option before the string chain and add '{var}' where you want to state the external python variable. For example, we can define the qubit where we want to apply the X gate as an external python variable.</li>
+<li><strong>Use f-strings</strong>: another option is to use the f-string from python to easily change the OpenPulse script. This is especially useful when we want to execute the same instructions with some variant parameters that are stored as pyhton variables. It can also be used for python scripts and interactive notebooks. To do this, you just need to write the 'f' option before the string chain and add '{var}' where you want to estate the external python variable. For example, we can define the qubit where we want to apply the X gate as an external python variable.</li>
 </ul>
 </div>
 </div>
@@ -8001,8 +8001,8 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Important</strong>: the job submission at Qmio has a queue system, for which the interactive use with jupyter notebooks is <strong>not recommended</strong>. When the cell with the <em>run</em> method is executed, the job is submitted and will wait until resources are available, the waiting time may depend on the demand. The main problem is that you are not reserving any time of usage when calling the notebook, you only reserve time when the <em>run</em> method is called, this can also bring problems related with the number of job quotas if the method is use multiple times in the notebook.<br/>
-The recommended use is to run a python script, submitting it with sbatch (or srun) and reserving a specific time for the QPU. Especially for experiments with multiple executions.</p>
+<p><strong>Important</strong>: the job submission at Qmio has a queue system, for which the interactive use with jupyter notebooks is <strong>not recommended</strong>. When the cell with the <em>run</em> method is executed, the job is submitted and will wait until resources are available, the waiting time may depend on the demand. The main problem is that you are not reserving any time of usage when calling the notebook, you only reserve time when the <em>run</em> method is called, this can also bring problems related with the number of job quotas if the method is used multiple times in the notebook.<br/>
+The recommended use is to run a python script, submitting it with sbatch (or srun) and reserving time for the QPU. Especially for experiments with multiple executions.</p>
 </div>
 </div>
 </div>

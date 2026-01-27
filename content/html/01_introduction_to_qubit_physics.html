@@ -7621,11 +7621,7 @@ The time evolution for the qubit state is, omitting global phases:
 $$\ket{\psi(t)}=\cos\left(\theta/2\right)\ket{0}+e^{i\left(\phi-\omega_q t\right)}\sin\left(\theta/2\right)\ket{1}\equiv \text{RZ}\left(-\omega_q t\right),$$
 which corresponds to a continous RZ rotation on the Bloch sphere, with a predictable rate set by its resonance frequency. <br/>
 <br/>
-There are two main reasons why keeping track of this intrinsic time evolution is important:</p>
-<ul>
-<li>It's often convenient to work in the <strong>rotation frame</strong> of the qubit, where this evolution is removed by applying the known $U(t)^\dagger$. In this frame, pulses have more simpler expressions.</li>
-<li><strong>RZ gates</strong> can be implemented by just letting the system evolve, without the need of applying any pulse. This will be explored later for the virtual RZ gates.</li>
-</ul>
+The main reason for keeping track of this intrinsic time evolution is because it's often convenient to work in the <strong>rotation frame</strong> of the qubit, where this evolution is removed by applying the known $U(t)^\dagger$. In this frame, pulses have much simpler expressions.</p>
 </div>
 </div>
 </div>
@@ -7712,6 +7708,46 @@ On the other hand, after enough time, the qubit state purity increases again unt
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="1.3.-The-qubit-resonator-coupling">1.3. The qubit-resonator coupling<a class="anchor-link" href="#1.3.-The-qubit-resonator-coupling">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a84079aa">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Another important process in quantum computers is the measurement of the qubit state. In superconducting devices, the most common method is the <strong>disperssive readout</strong>, which also relies on pulse driving to acquire measurement information. Disperssive readout consist of coupling a transmon qubit to a resonator - typically a superconducting LC circuit - with a sufficiently detuned resonance frequency. In this setup, driving the resonator with a microwave pulse produces a measurable response that depends on the state of the qubit. This approach allows us to infer the qubit state by probing with the resonator, rather than interacting with the qubit directly, reducing measurement-induced effects.<br/>
+<br/>
+This qubit-resonator system is commonly modeled by the resonant Jaynes-Cummings Hamiltonian:
+$$
+H_{JC}=\hbar\omega_q\frac{\sigma_z}{2}+\hbar\omega_r\left(a^\dagger a +\frac{1}{2}\right)+\hbar g \left(\sigma_+ a +\sigma_- a^\dagger\right),
+$$
+where $\omega_q$ and $\omega_r$ are the resonance frequencies of the qubit and resonator, respectively; $\sigma_z$, $\sigma_+$ and $\sigma_-$ are operators on the two-dimensional qubit space, $a\left(a^\dagger\right)$ are the anihilation(creation) operators of the resonator mode; and $g$ is the tranverse coupling strength. The interaction term describes the coherent exchanger between systems: when the qubit relaxes via $\sigma_-$, the resonator is excited via $a^\dagger$, and vice versa. <br/>
+<br/>
+In the <strong>disperssive regime</strong>, when we have a large detuning $\Delta=|\omega_r - \omega_q|\gg g$, the direct energy exchange of energy between the two systems is surpressed, but an entangled behaviour can still be found. In this limit, the Hamiltonian can be expressed as:
+$$
+H_\text{dis}=\hbar\left(\omega_r+\chi\sigma_z\right)\left(a^\dagger a+\frac{1}{2}\right)+\hbar\tilde{\omega}_q\frac{\sigma_z}{2},
+$$
+where $\chi=g^2/\Delta$ is the <strong>disperssive shift</strong>, and $\tilde{\omega}_q=\omega_q+\chi$ is the qubit frequency detuned by the Lamb shift.<br/>
+<br/>
+Restricting to the resonator dynamics, the shift in its resonance frequency depends on the qubit state:</p>
+<ul>
+<li><p>If the qubit is in $\ket{0}$ $\left(\sigma_z\ket{0}=+\ket{0}\right)$, the resonator frequency is $\tilde{\omega}_r=\omega_r+\chi$.</p>
+</li>
+<li><p>If the qubit is in $\ket{1}$ $\left(\sigma_z\ket{1}=-\ket{1}\right)$, the resonator frequency is $\tilde{\omega}_r=\omega_r-\chi$.</p>
+</li>
+</ul>
+<p>Thus, the qubit state can be inferred from the resonator dynamics.<br/>
+<br/></p>
+<p>Finally, the probing of the resonator has to be included in the model. To acquire the measurement, a microwave pulse drive is applied on the resonator and its response is registered. In the rotating frame, the effective Hamiltonian becomes:
+$$
+\tilde{H}_\text{disp}=\hbar\left(\omega_r-\omega_d+\chi\sigma_z\right)a^\dagger a+\varepsilon(a+a^\dagger),
+$$
+where $\omega_d$ is the frequency and $\varepsilon$ the amplitude of the driving pulse. This Hamiltonian descrives a driven quantum harmonic oscillator whose response depends on the qubit state. This is the system to which we have direct experimental access.<br/>
+<br/>
+In practice, the signal emitted by the driven resonator is amplified and demodulated using homodyne or heterodyne detection, typically via an IQ-mixer. By analyzing the resultinf in-phase (I) and quadrature (Q) components of the signa, the measurement outcome that allows qubit state classification can be extracted.</p>
 </div>
 </div>
 </div>
