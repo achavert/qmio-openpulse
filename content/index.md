@@ -14,9 +14,6 @@ The pulse-level implementation of some of the most common native gates will be e
 
 
 ### [3. Two-qubit pulse control](notebook03.md)
-#### The CR and ECR gates
-#### Multi-qubit driving with OpenPulse
-#### ECR calibration example
 
 ### 4. Advanced examples
 
