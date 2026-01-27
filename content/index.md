@@ -13,7 +13,7 @@ To understand how quantum gates are implemented, we first need to examine the qu
 The pulse-level implementation of some of the most common native gates will be explored, including the physical meaning of qubit driving, the different techniques and features available in Qmio using the OpenPulse grammar, and illustrative examples of gate calibration and single-qubit operations based on Rabi oscillations.
 
 
-### 3. Two qubit pulse control
+### [3. Two-qubit pulse control](notebook03.md)
 #### The CR and ECR gates
 #### Multi-qubit driving with OpenPulse
 #### ECR calibration example
