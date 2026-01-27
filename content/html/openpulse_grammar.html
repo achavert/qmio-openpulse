@@ -7575,7 +7575,7 @@ OpenPulse grammar takes the physical concepts of the qubit pulse-driving and set
 <strong>How to set up a connection with Qmio?</strong><br/>
 You'll need access to the Qmio CPD nodes with a <strong>@qmio.cesga.es</strong> account. Next, you'll need to load the following modules:<br/>
 <br/>
-<strong>module load qmio/hpc gcc/12.3.0 pytket/1.23.0-python-3.9.9 qmio-run/0.5.1-python-3.9.9 qiskit/1.2.4-python-3.9.9 qmio-tools/0.2.1-python-3.9.9</strong>
+<strong><code>module load qmio/hpc gcc/12.3.0 pytket/1.23.0-python-3.9.9 qmio-run/0.5.1-python-3.9.9 qiskit/1.2.4-python-3.9.9 qmio-tools/0.2.1-python-3.9.9</code></strong>
 <br/>
 <br/>
 Remember to load this modules each time you send the pyhton script or run the jupyter notebook (always in a <em>compute</em> node for this).<br/>
@@ -7638,14 +7638,14 @@ Next, in the python script/notebook cell, import and call the QmioRuntimeService
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>To send the instruction to Qmio and retrieve the results we'll use the method <em>QmioRuntimeService.run</em>, which has the following relevant arguments:</p>
 <ul>
-<li><strong>'circuit'</strong>: OpenPulse instructions, as a character string for our case.</li>
-<li><strong>'shots'</strong>: number of executions for the instructions in the qpu, will determine the number of result items.</li>
-<li><strong>'res_format'</strong>: the format for the instruction, always "raw" for our case.</li>
+<li><strong><code>circuit</code></strong>: OpenPulse instructions, as a character string for our case.</li>
+<li><strong><code>shots</code></strong>: number of executions for the instructions in the qpu, will determine the number of result items.</li>
+<li><strong><code>res_format</code></strong>: the format for the instruction, always "raw" for our case.</li>
 </ul>
 <p>The <em>run</em> method will output a dictionary with the following keys:</p>
 <ul>
-<li><strong>'results'</strong>: array with the numerical results of the measurements.</li>
-<li><strong>'execution_metrics'</strong>: dictionary with the executions information ('optimized_circuit' and 'optimized_instruction_count').</li>
+<li><strong><code>results</code></strong>: array with the numerical results of the measurements.</li>
+<li><strong><code>execution_metrics</code></strong>: dictionary with the executions information ('optimized_circuit' and 'optimized_instruction_count').</li>
 </ul>
 <p>The following usage is recommended:</p>
 </div>
@@ -8035,10 +8035,10 @@ The recommended use is to run a python script, submitting it with sbatch (or sru
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>In OpenQASM we can define <strong>calibration blocks</strong> to modify or design the pulse instructions of a gate. The grammar for this blocks must be specify through the <em>defcalgrammar</em> instruction at the start of the code. There are two types of calibration blocks:</p>
+<p>In OpenQASM we can define <strong>calibration blocks</strong> to modify or design the pulse instructions of a gate. The grammar for this blocks must be specify through the <code>defcalgrammar</code> instruction at the start of the code. There are two types of calibration blocks:</p>
 <ul>
-<li><strong>cal</strong>: has no name or inputs, it's used to capture values from the device calibration (qubit ports, frequencies... ) or define values that will be needed in the gate pulse instructions. The values declared inside the <em>cal</em> blocks can only be referenced form other <em>cal</em> or <em>defcal</em> blocks.</li>
-<li><strong>defcal</strong>: the name is composed of the instruction and specific qubit it'll be applied to ($qubit). It's use to declare the pulse-level instructions for the gate. The</li>
+<li><strong><code>cal</code></strong>: has no name or inputs, it's used to capture values from the device calibration (qubit ports, frequencies... ) or define values that will be needed in the gate pulse instructions. The values declared inside the <code>cal</code> blocks can only be referenced form other <code>cal</code> or <code>defcal</code> blocks.</li>
+<li><strong><code>defcal</code></strong>: the name is composed of the instruction and specific qubit it'll be applied to (<code>$qubit</code>). It's use to declare the pulse-level instructions for the gate. The</li>
 </ul>
 <p>Let's see an example, here we'll import the calibrated frame from a qubit, change the driving frequency and define a constant pulse:</p>
 </div>
@@ -8059,9 +8059,9 @@ cal {
     set_frequency(q8_drive, 4.25e9);
 }
 
-defcal pulse $8{&lt;br&gt;
-    waveform wf = constant(6.4e-08, 0.1);&lt;br&gt;
-    play(q8_drive, wf);&lt;br&gt;
+defcal pulse $8{
+    waveform wf = constant(6.4e-08, 0.1);
+    play(q8_drive, wf);
 }
 
 pulse $8;
@@ -8076,7 +8076,7 @@ pulse $8;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The <em>defcalgrammar "openpulse"</em> set the OpenPulse grammar for the calibration blocks. The frame variable <em>q8_drive</em> can only be accessed in other <em>cal</em> and <em>defcal</em> blocks.</p>
+<p>The <code>defcalgrammar "openpulse"</code> set the OpenPulse grammar for the calibration blocks. The frame variable <code>q8_drive</code> can only be accessed in other <code>cal</code> and <code>defcal</code> blocks.</p>
 </div>
 </div>
 </div>
@@ -8098,7 +8098,7 @@ pulse $8;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>A <strong>port</strong> represents an input or output component from the communication with the qubit, it gives us the channel to control and measure the qubit. The specific mapping for the ports and channel specifications (NCO, DAG-ADG converters, amplifiers...) depends on the hardware provider. <br/>
+<p>A <strong><code>port</code></strong> represents an input or output component from the communication with the qubit, it gives us the channel to control and measure the qubit. The specific mapping for the ports and channel specifications (NCO, DAG-ADG converters, amplifiers...) depends on the hardware provider. <br/>
 <br/>
 We can access this ports on the calibration blocks using the variables named by the provider:</p>
 </div>
@@ -8139,12 +8139,12 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>A <strong>frame</strong> also reference a qubit's channel, but also keeps track of the qubit's frame of reference information, which simplifies the way we have to define the pulses. It contains the following features:</p>
+<p>A <strong><code>frame</code></strong> also reference a qubit's channel, but also keeps track of the qubit's frame of reference information, which simplifies the way we have to define the pulses. It contains the following features:</p>
 <ul>
-<li><strong>port</strong>: specifies whether the communication is to drive, measure or read the qubit (later we'll see how each works).</li>
-<li><strong>frequency</strong> (float): it's the qubit's resonance frequency where we find the transition $|0\rangle\rightarrow|1\rangle$.</li>
-<li><strong>phase</strong> (angle): is the accrued phase from the qubit's rotation.</li>
-<li><strong>duration</strong> (time): it's used to keep track of the qubit evolution through time.</li>
+<li><strong><code>port</code></strong>: specifies whether the communication is to drive, measure or read the qubit (later we'll see how each works).</li>
+<li><strong><code>frequency</code></strong> (float): it's the qubit's resonance frequency where we find the transition $|0\rangle\rightarrow|1\rangle$.</li>
+<li><strong><code>phase</code></strong> (angle): is the accrued phase from the qubit's rotation.</li>
+<li><strong><code>duration</code></strong> (time): it's used to keep track of the qubit evolution through time.</li>
 </ul>
 <p>The frame keeps track of two properties:<br/>
 <br/>
@@ -8153,9 +8153,9 @@ Track the time of the specific qubit, so programs don't need to deal with absolu
 <br/>
 There are 3 types of frames:</p>
 <ul>
-<li><strong>qQUBIT_drive</strong>: frame for qubit driving, contains the qubit's resonance frequency. Used to implement any pulse-driving.</li>
-<li><strong>rQUBIT_measure</strong>: frame for the resonator's measuring pulse. Used to specify the measuring pulse shape and frequency.</li>
-<li><strong>rQUBIT_acquire</strong>: frame for resonator's measurement acquisition. Used for retrieving the measurement output from the qubit's resonator.</li>
+<li><strong><code>qQUBIT_drive</code></strong>: frame for qubit driving, contains the qubit's resonance frequency. Used to implement any pulse-driving.</li>
+<li><strong><code>rQUBIT_measure</code></strong>: frame for the resonator's measuring pulse. Used to specify the measuring pulse shape and frequency.</li>
+<li><strong><code>rQUBIT_acquire</code></strong>: frame for resonator's measurement acquisition. Used for retrieving the measurement output from the qubit's resonator.</li>
 </ul>
 <p>Here is an example on how to access this frames:</p>
 </div>
@@ -8190,17 +8190,17 @@ cal {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h4 id="Frame-manipulation">Frame manipulation<a class="anchor-link" href="#Frame-manipulation">¶</a></h4><p>There is a set of functions to access and modify the different features of the frame:</p>
 <ul>
-<li><p><strong>set_phase(frame, angle)</strong>: sets the accrued angle $\theta$ from the frame to an angle.</p>
+<li><p><strong><code>set_phase(frame, angle)</code></strong>: sets the accrued angle $\theta$ from the frame to an angle.</p>
 </li>
-<li><p><strong>shift_phase(frame, angle)</strong>: changes the accrued angle $\theta$ from the frame by an angle.</p>
+<li><p><strong><code>shift_phase(frame, angle)</code></strong>: changes the accrued angle $\theta$ from the frame by an angle.</p>
 </li>
-<li><p><strong>get_phase(frame) &gt; angle</strong>: retrieves the accrued angle $\theta$ from the frame.</p>
+<li><p><strong><code>get_phase(frame) &gt; angle</code></strong>: retrieves the accrued angle $\theta$ from the frame.</p>
 </li>
-<li><p><strong>set_frequency(frame, float)</strong>: sets the frame frequency to a float.</p>
+<li><p><strong><code>set_frequency(frame, float)</code></strong>: sets the frame frequency to a float.</p>
 </li>
-<li><p><strong>shift_frequency(frame, float)</strong>: changes the frame frequency by a float.</p>
+<li><p><strong><code>shift_frequency(frame, float)</code></strong>: changes the frame frequency by a float.</p>
 </li>
-<li><p><strong>get_frequency(frame) &gt; float</strong>: retrieves the frame frequency.</p>
+<li><p><strong><code>get_frequency(frame) &gt; float</code></strong>: retrieves the frame frequency.</p>
 </li>
 </ul>
 <p><strong>Important</strong>: remember that these functions can only be used inside calibration blocks.</p>
@@ -8225,19 +8225,18 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>When we want to define a pulse we'll need to set a frame (like we saw before) and a <strong>waveform</strong>, which establish the amplitude profile of the pulse we want to apply. For example, a <strong>constant</strong> pulse will have a constant amplitude profile, meaning that the maximum amplitude for the pulse will remain constant during its application. A <strong>gaussian</strong> pulse, on the other hand, starts with zero maximum amplitude, which will grow until some mean value, and then will decrease again with as in a gaussian profile. Here are some examples for this waveforms (constant on the left, gaussian on the right):
+<p>When we want to define a pulse we'll need to set a frame (like we saw before) and a <code>waveform</code>, which establish the amplitude profile of the pulse we want to apply. For example, a <code>constant</code> pulse will have a constant amplitude profile, meaning that the maximum amplitude for the pulse will remain constant during its application. A <code>gaussian</code> pulse, on the other hand, starts with zero maximum amplitude, which will grow until some mean value, and then will decrease again with as in a gaussian profile. Here are some examples for this waveforms (constant on the left, gaussian on the right):
 <br/><br/></p>
 <div style="text-align: center;">
 <img alt="No description has been provided for this image" src="./media/constant.png" width="480"/> <img alt="No description has been provided for this image" src="./media/gaussian.png" width="480"/>
 </div>
 <br/><br/>
-The *waveform* variable type can be expressed as:
-
+<p>The <code>waveform</code> variable type can be expressed as:</p>
 <ul>
 <li><p>An <strong>array of complex values</strong>: the waveform is determined by the complex value of the array in each unit time. In other words, each value of the array determines the pulse's amplitude in each time window of lenght <strong>dt</strong> (minimum time resolution, provided by hardware). A pulse defined by a 100 values array will have length 100dt. This option allows for complex time-dependent waveforms (DRAG for example), but requires to compute the especific complex amplitude for each instant. For Qmio, this <strong>dt</strong> is 0,5ns.
 <br/></p>
 </li>
-<li><p>An <strong>extern function</strong>: there are some functions already implemented in OpenPulse grammar that can be accessed through the <em>extern</em> function. For all of them, apart from other parameter, the <strong>duration</strong> of the pulse must be especified.</p>
+<li><p>An <code>extern function</code>: there are some functions already implemented in OpenPulse grammar that can be accessed through the <em>extern</em> function. For all of them, apart from other parameter, the <code>duration</code> of the pulse must be especified.</p>
 </li>
 </ul>
 <p>There is a bunch of built-in waveforms, let's see each of them:</p>
@@ -8251,9 +8250,9 @@ The *waveform* variable type can be expressed as:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="constant(duration,-amplitude)">constant(duration, amplitude)<a class="anchor-link" href="#constant(duration,-amplitude)">¶</a></h4><ul>
-<li>duration: total pulse duration, by default the float will be read in seconds, but it can be specified the units at the end of it. For example, we can express one nanosecond as follows: 1e-9 (in seconds), 1ns (in nanoseconds) or 2dt (2 time units of the hardware, 0.5ns for Qmio).</li>
-<li>amplitude: the constant amplitude of the pulse, proportional to some hardware defined values for the pulse-generating potential. In Qmio there are limits set by the provider, and the backend will raise an error if the limit is exceded. In general, it should not surpass 1.0, but lower values are recommended to avoid crosstalk, reflections or other fenomena that may happen for high energy pulses.</li>
+<h4 id="constant(duration,-amplitude)"><code>constant(duration, amplitude)</code><a class="anchor-link" href="#constant(duration,-amplitude)">¶</a></h4><ul>
+<li><code>duration</code>: total pulse duration, by default the float will be read in seconds, but it can be specified the units at the end of it. For example, we can express one nanosecond as follows: 1e-9 (in seconds), 1ns (in nanoseconds) or 2dt (2 time units of the hardware, 0.5ns for Qmio).</li>
+<li><code>amplitude</code>: the constant amplitude of the pulse, proportional to some hardware defined values for the pulse-generating potential. In Qmio there are limits set by the provider, and the backend will raise an error if the limit is exceded. In general, it should not surpass 1.0, but lower values are recommended to avoid crosstalk, reflections or other fenomena that may happen for high energy pulses.</li>
 </ul>
 <p><strong>Important</strong>: for Qmio, this function has the argument exchanged from the OpenPulse documentation and the rest of external functions.</p>
 </div>
@@ -8266,10 +8265,10 @@ The *waveform* variable type can be expressed as:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="gaussian(amplitude,-duration,-sigma)">gaussian(amplitude, duration, sigma)<a class="anchor-link" href="#gaussian(amplitude,-duration,-sigma)">¶</a></h4><ul>
-<li>duration: total duration, same as the constant.</li>
-<li>amplitude: the maximum amplitude of the gaussian profile, which will be met at half the duration of the pulse. The same recommendations are applied to this limits, but be aware that they may vary depending on the waveform.</li>
-<li>sigma: the standard deviation of the gaussian, i.e., the width of the pulse. It can be used to change how flat or dense the pulse is, for example, a big enough sigma will result in a constant pulse. There is a limit on how small the width can be, but may vary depending on the maximim amplitude.</li>
+<h4 id="gaussian(amplitude,-duration,-sigma)"><code>gaussian(amplitude, duration, sigma)</code><a class="anchor-link" href="#gaussian(amplitude,-duration,-sigma)">¶</a></h4><ul>
+<li><code>duration</code>: total duration, same as the constant.</li>
+<li><code>amplitude</code>: the maximum amplitude of the gaussian profile, which will be met at half the duration of the pulse. The same recommendations are applied to this limits, but be aware that they may vary depending on the waveform.</li>
+<li><code>sigma</code>: the standard deviation of the gaussian, i.e., the width of the pulse. It can be used to change how flat or dense the pulse is, for example, a big enough sigma will result in a constant pulse. There is a limit on how small the width can be, but may vary depending on the maximim amplitude.</li>
 </ul>
 </div>
 </div>
@@ -8281,10 +8280,10 @@ The *waveform* variable type can be expressed as:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="sech(amplitude,-duration,-sigma)">sech(amplitude, duration, sigma)<a class="anchor-link" href="#sech(amplitude,-duration,-sigma)">¶</a></h4><ul>
-<li>duration: total duration.</li>
-<li>amplitude: the maximum amplitude of the profile.</li>
-<li>sigma: the standard deviation of the waveform profile.</li>
+<h4 id="sech(amplitude,-duration,-sigma)"><code>sech(amplitude, duration, sigma)</code><a class="anchor-link" href="#sech(amplitude,-duration,-sigma)">¶</a></h4><ul>
+<li><code>duration</code>: total duration.</li>
+<li><code>amplitude</code>: the maximum amplitude of the profile.</li>
+<li><code>sigma</code>: the standard deviation of the waveform profile.</li>
 </ul>
 </div>
 </div>
@@ -8296,11 +8295,11 @@ The *waveform* variable type can be expressed as:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="gaussian_square(amplitude,-duration,-square_width,-sigma)">gaussian_square(amplitude, duration, square_width, sigma)<a class="anchor-link" href="#gaussian_square(amplitude,-duration,-square_width,-sigma)">¶</a></h4><ul>
-<li>duration: total duration.</li>
-<li>amplitude: the maximum amplitude of the profile.</li>
-<li>square_width: the width of the squared waveform component.</li>
-<li>sigma: the standard deviation of the waveform profile.</li>
+<h4 id="gaussian_square(amplitude,-duration,-square_width,-sigma)"><code>gaussian_square(amplitude, duration, square_width, sigma)</code><a class="anchor-link" href="#gaussian_square(amplitude,-duration,-square_width,-sigma)">¶</a></h4><ul>
+<li><code>duration</code>: total duration.</li>
+<li><code>amplitude</code>: the maximum amplitude of the profile.</li>
+<li><code>square_width</code>: the width of the squared waveform component.</li>
+<li><code>sigma</code>: the standard deviation of the waveform profile.</li>
 </ul>
 </div>
 </div>
@@ -8312,11 +8311,11 @@ The *waveform* variable type can be expressed as:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="drag(amplitude,-duration,-sigma,-beta)">drag(amplitude, duration, sigma, beta)<a class="anchor-link" href="#drag(amplitude,-duration,-sigma,-beta)">¶</a></h4><ul>
-<li>duration: total duration.</li>
-<li>amplitude: the maximum amplitude of the profile.</li>
-<li>sigma: the standard deviation of the waveform profile.</li>
-<li>beta: the Y correction amplitude.</li>
+<h4 id="drag(amplitude,-duration,-sigma,-beta)"><code>drag(amplitude, duration, sigma, beta)</code><a class="anchor-link" href="#drag(amplitude,-duration,-sigma,-beta)">¶</a></h4><ul>
+<li><code>duration</code>: total duration.</li>
+<li><code>amplitude</code>: the maximum amplitude of the profile.</li>
+<li><code>sigma</code>: the standard deviation of the waveform profile.</li>
+<li><code>beta</code>: the Y correction amplitude.</li>
 </ul>
 </div>
 </div>
@@ -8328,11 +8327,11 @@ The *waveform* variable type can be expressed as:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="sine(amplitude,-duration,-frequency,-phase)">sine(amplitude, duration, frequency, phase)<a class="anchor-link" href="#sine(amplitude,-duration,-frequency,-phase)">¶</a></h4><ul>
-<li>duration: total duration.</li>
-<li>amplitude: the maximum amplitude of the profile.</li>
-<li>frequency: the frequency of the sine profile.</li>
-<li>phase: the phase offset of the sine profile.</li>
+<h4 id="ine(amplitude,-duration,-frequency,-phase)"><code>ine(amplitude, duration, frequency, phase)</code><a class="anchor-link" href="#ine(amplitude,-duration,-frequency,-phase)">¶</a></h4><ul>
+<li><code>duration</code>: total duration.</li>
+<li><code>amplitude</code>: the maximum amplitude of the profile.</li>
+<li><code>frequency</code>: the frequency of the sine profile.</li>
+<li><code>phase</code>: the phase offset of the sine profile.</li>
 </ul>
 </div>
 </div>
@@ -8344,7 +8343,7 @@ The *waveform* variable type can be expressed as:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Example-of-waveform-usage">Example of waveform usage<a class="anchor-link" href="#Example-of-waveform-usage">¶</a></h4><p>The waveforms must be declare in the calibration blocks:</p>
+<h4 id="Example-of-waveform-usage">Example of <code>waveform</code> usage<a class="anchor-link" href="#Example-of-waveform-usage">¶</a></h4><p>The waveforms must be declare in the calibration blocks:</p>
 <pre><code>OPENQASM 3;
 defcalgrammar "openpulse";
 
@@ -8364,13 +8363,13 @@ cal {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h4 id="Waveform-manipulation">Waveform manipulation<a class="anchor-link" href="#Waveform-manipulation">¶</a></h4><p>There are also some implemented functions to manipulate and operate with waveform:</p>
 <ul>
-<li><p><strong>mix(waveform, waveform)&gt;waveform</strong>: multiplies two waveforms, $\text{wf}(t_i) = \text{wf}_1(t_i) \times \text{wf}_2(t_i)$.</p>
+<li><p><strong><code>mix(waveform, waveform)&gt;waveform</code></strong>: multiplies two waveforms, $\text{wf}(t_i) = \text{wf}_1(t_i) \times \text{wf}_2(t_i)$.</p>
 </li>
-<li><p><strong>sum(waveform, waveform)&gt;waveform</strong>: adds two waveforms, $\text{wf}(t_i) = \text{wf}_1(t_i) + \text{wf}_2(t_i)$.</p>
+<li><p><strong><code>sum(waveform, waveform)&gt;waveform</code></strong>: adds two waveforms, $\text{wf}(t_i) = \text{wf}_1(t_i) + \text{wf}_2(t_i)$.</p>
 </li>
-<li><p><strong>phase_shift(waveform, angle)&gt;waveform</strong>: adds a relative phase to a waveform, $\text{wf}(t_i) = \text{wf}_1(t_i)\cdot e^{i\theta}$.</p>
+<li><p><strong><code>phase_shift(waveform, angle)&gt;waveform</code></strong>: adds a relative phase to a waveform, $\text{wf}(t_i) = \text{wf}_1(t_i)\cdot e^{i\theta}$.</p>
 </li>
-<li><p><strong>scale(waveform, float)&gt;waveform</strong>: scales the amplitude of the waveform by a real factor,  $\text{wf}(t_i) = A\cdot\text{wf}_1(t_i)$.</p>
+<li><p><strong><code>scale(waveform, float)&gt;waveform</code></strong>: scales the amplitude of the waveform by a real factor,  $\text{wf}(t_i) = A\cdot\text{wf}_1(t_i)$.</p>
 </li>
 </ul>
 </div>
@@ -8383,7 +8382,7 @@ cal {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.5-Play">3.5 Play<a class="anchor-link" href="#3.5-Play">¶</a></h3><p>To schedule the pulses, the instruction <strong>play(frame, waveform)</strong> can be used only inside <em>defcal</em> blocks. In <em>play</em> all the require information for the pulse communitation is contained: port, frequency, time tracking and waveform. Here is a simple example:</p>
+<h3 id="3.5-Play">3.5 Play<a class="anchor-link" href="#3.5-Play">¶</a></h3><p>To schedule the pulses, the instruction <strong><code>play(frame, waveform)</code></strong> can be used only inside <code>defcal</code> blocks. In <code>play</code> all the require information for the pulse communitation is contained: port, frequency, time tracking and waveform. Here is a simple example:</p>
 <pre><code>OPENQASM 3;
 defcalgrammar "openpulse";
 
@@ -8419,7 +8418,7 @@ gaussian_pulse $8;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>To retrieve the measurements from the qubit, the most direct method is the <strong>measure</strong> instruction. This function includes all the measurement process: driving pulse of the resonator, measurement acquisition and bisector projection.<br/></p>
+<p>To retrieve the measurements from the qubit, the most direct method is the <code>measure</code> instruction. This function includes all the measurement process: driving pulse of the resonator, measurement acquisition and bisector projection.<br/></p>
 <p>To use it, you just need to specify the qubit to measure, for example:</p>
 <pre><code>OPENQASM 3;
 defcalgrammar "openpulse";
@@ -8551,7 +8550,7 @@ Fot the sake of simplicity, and to focus on the OpenPulse grammar use, on the co
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>To operate and measure more than one qubit in the same execution (to test entangled states, study crosstalk...), we can use the same instructions, declaring all qubits affected by them. For multiple qubit operations, all the used qubits must appear on the <em>defcal</em> block definition and declaration; for measurements, the qubits must be separated by a comma, as the measure instruction is applied for each qubit independently.</p>
+<p>To operate and measure more than one qubit in the same execution (to test entangled states, study crosstalk...), we can use the same instructions, declaring all qubits affected by them. For multiple qubit operations, all the used qubits must appear on the <code>defcal</code> block definition and declaration; for measurements, the qubits must be separated by a comma, as the measure instruction is applied for each qubit independently.</p>
 <pre><code>OPENQASM 3;
 defcalgrammar "openpulse";
 
@@ -8589,16 +8588,16 @@ measure $8, $9;
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>There are other options in OpenPulse for lower-level measurements, which must have been implemented by the hardware provider. This extern functions can only be used inside <em>defcal</em> blocks, like with the <em>play</em> instruction. Then especific function arguments and outputs should also be especify by the provider, but the acquisition frame is allways needed. Here is a general idea of the usual options and which are implemented in Qmio:</p>
+<p>There are other options in OpenPulse for lower-level measurements, which must have been implemented by the hardware provider. This extern functions can only be used inside <code>defcal</code> blocks, like with the <code>play</code> instruction. Then especific function arguments and outputs should also be especify by the provider, but the acquisition frame is allways needed. Here is a general idea of the usual options and which are implemented in Qmio:</p>
 <ul>
-<li><p><strong>capture_v0(frame)</strong>: the raw output from the measurement, for superconducting qubits, it could be the raw digitalized signal (after the ADG). <strong>Not implemented in Qmio</strong>.</p>
+<li><p><strong><code>capture_v0(frame)</code></strong>: the raw output from the measurement, for superconducting qubits, it could be the raw digitalized signal (after the ADG). <strong>Not implemented in Qmio</strong>.</p>
 </li>
-<li><p><strong>capture_v1(frame, filter)&gt;complex[float[32]]</strong>: the IQ value of the measurement, which is a complex number $I+iQ$. The computational states appear in the IQ complex plain as two separated blobs, but also higher energy eigenstates can be seen and measured with this acquision level. <strong>Implemented in Qmio but not working properly</strong>.</p>
+<li><p><strong><code>capture_v1(frame, filter)&gt;complex[float[32]]</code></strong>: the IQ value of the measurement, which is a complex number $I+iQ$. The computational states appear in the IQ complex plain as two separated blobs, but also higher energy eigenstates can be seen and measured with this acquision level. <strong>Implemented in Qmio but not working properly</strong>.</p>
 </li>
-<li><p><strong>capture_v2(frame, filter)&gt;bit</strong>: the discriminated bit from the measurement.</p>
+<li><p><strong><code>capture_v2(frame, filter)&gt;bit</code></strong>: the discriminated bit from the measurement.</p>
 </li>
 </ul>
-<p>Let's see an example of an $IQ$ acquisition using <em>capture_v1</em>:</p>
+<p>Let's see an example of an $IQ$ acquisition using <code>capture_v1</code>:</p>
 <pre><code class="language-OPENQASM">OPENQASM
 defcalgrammar "openpulse";
 
@@ -8629,9 +8628,9 @@ measure $8;
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="3.7-Time">3.7 Time<a class="anchor-link" href="#3.7-Time">¶</a></h3><p>As we saw before, each qubit frame keeps track independently of its time to automatically adjust the pulses with the physical rotation frame. This means that each qubit has an internal clock with a time variable that need to be syncronize in order to perform operations with multiple qubits. OpenPulse grammar has tools to delay and syncronize this clocks.<br/>
-Firstly, there are other functions that make the clock advance, these include any <em>decal</em> blocks, <em>play</em> or <em>capture</em> instructions. By default, <em>cal</em> blocks don't make the clock advance, as they are set before the instruction execution.<br/>
+Firstly, there are other functions that make the clock advance, these include any <code>defcal</code> blocks, <code>play</code> or <code>capture</code> instructions. By default, <code>cal</code> blocks don't make the clock advance, as they are set before the instruction execution.<br/>
 <br/>
-The <strong>delay[time] frame</strong> instruction makes the clock advance by a set time. You can either delay an especific frame from the qubit:</p>
+The <strong><code>delay[time] frame</code></strong> instruction makes the clock advance by a set time. You can either delay an especific <code>frame</code> from the qubit:</p>
 <pre><code>OPENQASM 3;
 defcalgrammar "openpulse";
 
