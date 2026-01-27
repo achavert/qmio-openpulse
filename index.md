@@ -18,5 +18,5 @@ This course assumes that you have access to the Qmio CPD nodes at CESGA (through
 
 
 ## References and acknowledgements
-The contents of this course were produced as part of the QUORUM project at the Galician Supercomputing Centre (CESGA).
+The contents of this course were produced as part of the QUORUM project at the Galician Supercomputing Center (CESGA).
 
