@@ -7726,8 +7726,8 @@ P_1(t)=\frac{1}{2}\left(1-\cos\left(\Omega_R t\right)\right).
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="2.3.-Rabi-oscillations-with-OpenPulse">2.3. Rabi oscillations with OpenPulse<a class="anchor-link" href="#2.3.-Rabi-oscillations-with-OpenPulse">¶</a></h2><p>Now that we have the theory, let's start with the hands-on introduction to its implementation with OpenPulse. The first step will be setting up the basic instructions for custom pulse configuration, then, we will develop an experiment to measure this Rabi oscillations in Qmio.<br/>
-<br/>
-This is the basic setup for recreating the situation from the last section, we'll break it step-by-step:</p>
+<br/></p>
+<p>Below there is a basic OpenPulse instruction block for a custom pulse, that recreates the situation described in last section:</p>
 <pre><code>OPENQASM 3;
 defcalgrammar "openpulse";
     
@@ -7743,6 +7743,27 @@ defcal custom_pulse $21{
 custom_pulse $21;
 measure $21;
 </code></pre>
+<p>Let's break it down step-by-step:</p>
+<ul>
+<li><p><code>OPENQASM 3</code>: specifies to the backend interpreter the language the instruction block uses.</p>
+</li>
+<li><p><code>defcalgrammar "openpulse"</code>: declares the grammar used in the <strong>calibration blocks</strong>: <code>cal</code> and <code>defcal</code>.</p>
+</li>
+<li><p><code>cal</code> blocks: used to access all the relevant system information, such as accessing qubit frames, declaring pulse shapes or other variables used in <code>defcal</code> blocks.</p>
+</li>
+<li><p><code>defcal</code> blocks: implement the custom pulse schedule, they are targeted to specific qubits and can be invoked at any time -after its declaration- on the main instruction code.</p>
+</li>
+<li><p><code>extern frame q21_drive</code>: imports the frame of the <strong>physical</strong> qubit 21, including its resonant frequency from the calibrations.</p>
+</li>
+<li><p><code>waveform wf = constant(1000dt, 0.15)</code>: defines a <code>waveform</code> type variable, which contains the information for the <strong>amplitude</strong>, <strong>duration</strong> and <strong>amplitude envelope</strong> of the pulse. This is where we can configure our pulse and change its effect. In this case, the waveform is constant $\left(s(t)=1\right)$ with a duration fo 1000 time units -for Qmio $dt=0.5$ns- and an amplitude of 0.15 -limited between 0.0 and 1.0- that recreates the pulse described in laste section for some arbitrary parameters.</p>
+</li>
+<li><p><code>play(q21_drive, wf)</code>: used to send the pulse instruction to the qubit, specifying its frame of effect and waveform. Notice that the driving frequency is set by the chosen frame, in this case it corresponds to the resonance frequency of qubit 21, as we directly imported it from calibrations.</p>
+</li>
+<li><p><code>custom_pulse $21</code>: invokes the custom pulse instructions declared in the <code>decal</code>.</p>
+</li>
+<li><p><code>measure $21</code>: invokes a default measurement instruction determined by the hardware provider, it returns a real value that allows to compute the discriminated binary output.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
