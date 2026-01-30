@@ -12,8 +12,11 @@ To understand how quantum gates are implemented, we first need to examine the qu
 ### [2. Single-qubit pulse control](notebook02.md)
 The pulse-level implementation of some of the most common native gates will be explored, including the physical meaning of qubit driving, the different techniques and features available in Qmio using the OpenPulse grammar, and illustrative examples of gate calibration and single-qubit operations based on Rabi oscillations.
 
+### [3. Qubit spectroscopy](notebook03.md)
+Pulse-level control gives us access to explore the transmon dynamics, like excitation to higher energy levels. In this notebook we'll how the qubit responds to pulses with different frequencies, exploring observable behaviours in Qmio.
 
-### [3. Two-qubit pulse control](notebook03.md)
+
+### [4. Two-qubit pulse control](notebook04.md)
 Entanglement is one of the pillars behind quantum computing. On this notebook we will explore how the entanglement between qubit systems is physically achieved, which are the most common methods and how to implement some of them with OpenPulse.
 
 
