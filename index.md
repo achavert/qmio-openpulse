@@ -11,7 +11,7 @@ A practical introduction to pulse-level control of superconducting qubits with t
 
 ## Contents
 
-This course is composed of three notebooks that explain 
+This course is composed of three notebooks that explain the superconducting qubit system and its control at pulse level, oriented to understand how the native quantum gates from Qmio are physically implemented, and to be able to design experiments in Qmio. Also, it includes a revised documentation of the OpenPulse grammar, specifically for Qmio's available features, and a more in depth dive into the theory of pulse control.  
 
 
 ### Notebooks
@@ -22,9 +22,9 @@ This course is composed of three notebooks that explain
 [3. **Two-qubit driving**](/content/notebook03.md)
 
 ### Documentation
-- OpenPulse grammar documentation for Qmio
+- [OpenPulse grammar documentation for Qmio](notebookE1.md)
 
-- Tranmon and pulse-level control theory
+- [Tranmon and pulse-level control theory](notebookE2.md)
 
 
 ## Requirements
