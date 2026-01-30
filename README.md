@@ -19,9 +19,9 @@ This course is composed of four notebooks that explain the superconducting qubit
 - [4. **Two-qubit driving**](/content/notebook04.md)
 
 ### Documentation
-- [OpenPulse grammar documentation for Qmio](notebookE1.md)
+- [OpenPulse grammar documentation for Qmio](/content/notebookE1.md)
 
-- [Tranmon and pulse-level control theory](notebookE2.md)
+- [Tranmon and pulse-level control theory](/content/notebookE2.md)
 
 
 ## Requirements
