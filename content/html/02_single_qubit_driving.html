@@ -8278,7 +8278,7 @@ P1 = 0.427
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">qubit</span> <span class="o">=</span> <span class="mi">8</span>
@@ -8819,12 +8819,12 @@ Let's see how we would desing this gate with OpenPulse. There are two ways to ap
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3f1f8d07">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3f1f8d07">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">qubit</span> <span class="o">=</span> <span class="mi">8</span>
@@ -8842,7 +8842,7 @@ Let's see how we would desing this gate with OpenPulse. There are two ways to ap
 <span class="s1">    </span><span class="se">}}</span>
 
 <span class="s1">    defcal custom_pulse $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="se">{{</span>
-<span class="s1">        shift_phase(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive, </span><span class="si">{</span><span class="n">angle</span><span class="si">}</span><span class="s1">)</span>
+<span class="s1">        shift_phase(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive, </span><span class="si">{</span><span class="n">angle</span><span class="si">}</span><span class="s1">);</span>
 <span class="s1">        play(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive, wf);</span>
 <span class="s1">    </span><span class="se">}}</span>
 
@@ -8860,6 +8860,44 @@ Let's see how we would desing this gate with OpenPulse. There are two ways to ap
         
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">40</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Waiting for resources
+Job started</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>(array([  4.,   2.,   2.,   4.,   6.,  23.,  38.,  69., 113., 139., 180.,
+        184., 223., 238., 231., 208., 193., 140., 131., 125., 122., 139.,
+        167., 194., 225., 271., 278., 303., 264., 233., 190., 137.,  98.,
+         53.,  38.,  24.,   6.,   3.,   1.,   1.]),
+ array([-3.17572033, -3.01858032, -2.86144032, -2.70430031, -2.5471603 ,
+        -2.3900203 , -2.23288029, -2.07574029, -1.91860028, -1.76146028,
+        -1.60432027, -1.44718026, -1.29004026, -1.13290025, -0.97576025,
+        -0.81862024, -0.66148024, -0.50434023, -0.34720023, -0.19006022,
+        -0.03292021,  0.12421979,  0.2813598 ,  0.4384998 ,  0.59563981,
+         0.75277981,  0.90991982,  1.06705983,  1.22419983,  1.38133984,
+         1.53847984,  1.69561985,  1.85275985,  2.00989986,  2.16703987,
+         2.32417987,  2.48131988,  2.63845988,  2.79559989,  2.95273989,
+         3.1098799 ]),
+ &lt;BarContainer object of 40 artists&gt;)</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
+<img alt="No description has been provided for this image" class="jp-needs-light-background" src="data:image/png;base64,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"/>
 </div>
 </div>
 </div>
@@ -8887,12 +8925,12 @@ $$R_X(\theta)=R_Z(-\pi)R_X(\pi/2)R_Z(\pi-\theta)R_X(\pi/2)R_Z(0)\equiv SX\cdot R
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=471db940">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=471db940">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">qubit</span> <span class="o">=</span> <span class="mi">8</span>
@@ -8911,7 +8949,7 @@ $$R_X(\theta)=R_Z(-\pi)R_X(\pi/2)R_Z(\pi-\theta)R_X(\pi/2)R_Z(0)\equiv SX\cdot R
 <span class="s1">    </span>
 <span class="s1">    defcal custom_pulse $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="se">{{</span>
 <span class="s1">        play(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive, wf);</span>
-<span class="s1">        shift_phase(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive, </span><span class="si">{</span><span class="n">angle</span><span class="si">}</span><span class="s1">)</span>
+<span class="s1">        shift_phase(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive, </span><span class="si">{</span><span class="n">angle</span><span class="si">}</span><span class="s1">);</span>
 <span class="s1">        play(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive, wf);</span>
 <span class="s1">    </span><span class="se">}}</span>
 
@@ -8929,6 +8967,44 @@ $$R_X(\theta)=R_Z(-\pi)R_X(\pi/2)R_Z(\pi-\theta)R_X(\pi/2)R_Z(0)\equiv SX\cdot R
         
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">40</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Waiting for resources
+Job started</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>(array([  2.,   2.,   2.,   2.,  13.,  15.,  16.,  23.,  29.,  46.,  58.,
+         67.,  77.,  93.,  97.,  76.,  59.,  75., 101.,  98., 136., 129.,
+        172., 205., 249., 303., 338., 391., 412., 383., 337., 283., 249.,
+        163., 129.,  86.,  44.,  23.,  11.,   6.]),
+ array([-3.05784742, -2.91195238, -2.76605735, -2.62016232, -2.47426728,
+        -2.32837225, -2.18247722, -2.03658218, -1.89068715, -1.74479211,
+        -1.59889708, -1.45300205, -1.30710701, -1.16121198, -1.01531694,
+        -0.86942191, -0.72352688, -0.57763184, -0.43173681, -0.28584178,
+        -0.13994674,  0.00594829,  0.15184333,  0.29773836,  0.44363339,
+         0.58952843,  0.73542346,  0.88131849,  1.02721353,  1.17310856,
+         1.3190036 ,  1.46489863,  1.61079366,  1.7566887 ,  1.90258373,
+         2.04847877,  2.1943738 ,  2.34026883,  2.48616387,  2.6320589 ,
+         2.77795393]),
+ &lt;BarContainer object of 40 artists&gt;)</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
+<img alt="No description has been provided for this image" class="jp-needs-light-background" src="data:image/png;base64,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"/>
 </div>
 </div>
 </div>
