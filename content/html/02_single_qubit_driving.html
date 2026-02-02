@@ -8813,6 +8813,8 @@ Let's see how we would desing this gate with OpenPulse. There are two ways to ap
 <li><p><strong><code>shift_phase(frame, angle)</code></strong>: it shifts the phase of the frame by the input value. This is equivalent to applying a RZ over the qubit's Z axis.</p>
 </li>
 </ul>
+<p>These functions can only be called in calibration blocks (<code>cal</code> and <code>defcal</code>).<br/>
+<br/></p>
 <p>As we already have $R_X(\pi/2)$ calibrated, we are going to apply an $R_Y(\pi/2)$:</p>
 </div>
 </div>
@@ -8869,7 +8871,7 @@ Let's see how we would desing this gate with OpenPulse. There are two ways to ap
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="The-universal-single-qubit-gate">The universal single-qubit gate<a class="anchor-link" href="#The-universal-single-qubit-gate">¶</a></h3><p>It can be proven that any single-qubit gate can be expressed as the following parametrized unitary:</p>
+<h3 id="Universal-single-qubit-gate">Universal single-qubit gate<a class="anchor-link" href="#Universal-single-qubit-gate">¶</a></h3><p>It can be proven that any single-qubit gate can be expressed as the following parametrized unitary:</p>
 <p>$$\begin{align*}
 \mathcal{U}(\theta,\varphi,\lambda)&amp;=\begin{pmatrix}
 \cos(\theta/2) &amp; -e^{i\lambda}\sin(\theta/2)\\

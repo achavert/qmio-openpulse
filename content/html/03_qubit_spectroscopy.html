@@ -7802,7 +7802,27 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>$ \newcommand{\bra}[1]{\langle #1|} $
+$ \newcommand{\ket}[1]{|#1\rangle} $
+$ \newcommand{\braket}[2]{\langle #1|#2\rangle} $
+$ \newcommand{\ketbra}[2]{| #1\rangle \langle #2|} $
+$ \newcommand{\tr}{{\rm tr}} $
+$ \newcommand{\i}{{\color{blue} i}} $
+$ \newcommand{\Hil}{{\cal H}} $
+$ \newcommand{\V}{{\cal V}} $
+$ \newcommand{\bn}{{\bf n}} $</p>
 <h1 id="3.-Qubit-spectroscopy">3. Qubit spectroscopy<a class="anchor-link" href="#3.-Qubit-spectroscopy">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ef7675a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Pulses give grain-level access to the transmon dynamics, like excitation to higher energy states. In this notebook we'll see how the qubit responds to pulses with different frequencies, exploring some observable fenemona at Qmio.</p>
 </div>
 </div>
 </div>
@@ -7813,7 +7833,29 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.1.-Driving-off-resonance">3.1. Driving off-resonance<a class="anchor-link" href="#3.1.-Driving-off-resonance">¶</a></h2>
+<h2 id="3.1.-Measuring-the-anharmonicity">3.1. Measuring the anharmonicity<a class="anchor-link" href="#3.1.-Measuring-the-anharmonicity">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8b46d283">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>When we studied pulses for gate implementation, made a series of assumtions:</p>
+<ul>
+<li><p>We only considered the two computational energy levels of the transmon.</p>
+</li>
+<li><p>We set the driving frequency at the resonance of the qubit.</p>
+</li>
+</ul>
+<p>But in reality, transmons have higher energy levels that can be accessed by microwave pulses. For example, the second excited state $\ket{2}$ can be reached if we know the anharmonicity $\alpha$ of the qubit. We could apply a pulse of frequency $\omega_q+\alpha$ to promote from $\ket{1}$ to $\ket{2}$, or one with frequency $2\omega_q+\alpha$ to promote directly from $\ket{0}$. But, how can we measure these higher energy states? These states also produce a shift in the energy levels of the driven resonator, inducing a distinct observable response. When working with IQ-mixing readout, this would result in clouds on the IQ plane different from $\ket{0}$ and $\ket{1}$.<br/>
+<br/></p>
+<p>Unfortunatetly, in Qmio we don't have access to these IQ measurements, only to their projection to the $\ket{0}$-$\ket{1}$ bisector. This is a problem especially for the case of $\ket{2}$, as its cloud lands right above $\ket{1}$, making them practically undistinguishable from their bisector projection. This means that we can't directly measure $\omega_{12}$ or even $\omega_{02}$, as it would lead to a high error from the readout. Nevertheless, there is another effect that we can use to measure the anharmonicity.<br/>
+<br/></p>
+<p>The <strong>two-photon absorption (TPA)</strong> is the simultaneous absorption of two photons -with or without identical frequencies- where the system is promoted through a virtual energy level. In our case, this effect can promote the system from $\ket{0}$ to $\ket{2}$ with photons of frequency $\omega_q+\alpha/2$. Why is the convenient? First, we don't need to access the first excited state to prometo to $\ket{2}$, so we can interpret all the measurements in the bisector as the $\ket{2}$ with minimal readout error. Second, these frequency is close to the operative frequency of the qubit, much more convenient than the one for the one-photon $\ket{0}$-$\ket{2}$ transition. What we need to keep in mind is that TPA depends on the simultaneous absorption of two photons, reducing its probability compared to one-photon absorptions, which would lead to a less populated $\ket{2}$.</p>
 </div>
 </div>
 </div>
@@ -7825,6 +7867,132 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="3.2.-Spectroscopy-with-OpenPulse">3.2. Spectroscopy with OpenPulse<a class="anchor-link" href="#3.2.-Spectroscopy-with-OpenPulse">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3a4becd9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>A qubit spectroscopy consists of sweeping the driving frequencies for an X gate calibrated pulse and observing the response. The expected behaviour is a peak around the resonance frequency, corresponding to the $\ket{0}$-$\ket{1}$ transition. To change the pulses' frequency, we must do it by modifying the driving frame. In OpenPulse, this can be achieved with two functions:</p>
+<ul>
+<li><p><strong><code>set_frequency(frame, float)</code></strong>: sets the frequency to some value.</p>
+</li>
+<li><p><strong><code>shift_frequency(frame, float)</code></strong>: shift the frequency by some value.</p>
+</li>
+</ul>
+<p>This functions can only be invoked in calibration blocks (<code>cal</code> and <code>defcal</code>).<br/>
+<br/></p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=658f69cf">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qmio</span><span class="w"> </span><span class="kn">import</span> <span class="n">QmioRuntimeService</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">service</span> <span class="o">=</span> <span class="n">QmioRuntimeService</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_instruction</span><span class="p">(</span><span class="n">_backend</span><span class="p">,</span> <span class="n">_instruction</span><span class="p">,</span> <span class="n">_shots</span><span class="p">):</span>  
+        <span class="n">_res</span> <span class="o">=</span> <span class="n">_backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit</span> <span class="o">=</span> <span class="n">_instruction</span><span class="p">,</span> <span class="n">shots</span> <span class="o">=</span> <span class="n">_shots</span><span class="p">,</span> <span class="n">res_format</span> <span class="o">=</span> <span class="s1">'raw'</span><span class="p">)</span>     
+        <span class="k">try</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="n">_res</span><span class="p">[</span><span class="s2">"results"</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">_shots</span><span class="p">,))</span>                                      
+        <span class="k">except</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">_res</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=cac03bda">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">qubit</span> <span class="o">=</span> <span class="mi">8</span>
+
+<span class="c1"># Saturation pulse setting</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="mf">0.04646</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1"># dt</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># dt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">set_freq</span><span class="p">(</span><span class="n">_freq</span><span class="p">):</span>
+    <span class="n">_inst</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'''OPENQASM 3;</span>
+<span class="s1">    defcalgrammar "openpulse";</span>
+
+<span class="s1">    cal </span><span class="se">{{</span>
+<span class="s1">        extern frame q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive;</span>
+<span class="s1">        set_frequency(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive, </span><span class="si">{</span><span class="n">_freq</span><span class="si">}</span><span class="s1">);</span>
+<span class="s1">        waveform wf = gaussian(</span><span class="si">{</span><span class="n">amplitude</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s1">dt, </span><span class="si">{</span><span class="n">sigma</span><span class="si">}</span><span class="s1">dt);</span>
+<span class="s1">    </span><span class="se">}}</span>
+
+<span class="s1">    defcal custom_pulse $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1"> </span><span class="se">{{</span>
+<span class="s1">        play(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive, wf);</span>
+<span class="s1">    </span><span class="se">}}</span>
+
+<span class="s1">    custom_pulse $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
+<span class="s1">    measure $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;'''</span>
+    <span class="k">return</span> <span class="n">_inst</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5ff5f7ec">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Frequency sweep settings</span>
+<span class="n">freq_start</span> <span class="o">=</span> <span class="mf">4.25e9</span>
+<span class="n">freq_end</span> <span class="o">=</span> <span class="mf">4.45e9</span>
+<span class="n">freq_step</span> <span class="o">=</span> <span class="mf">0.001e9</span>
+<span class="n">freq_sweep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">freq_start</span><span class="p">,</span> <span class="n">freq_end</span><span class="p">,</span> <span class="n">freq_step</span><span class="p">)</span>
+
+<span class="n">shots</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="n">service</span><span class="o">.</span><span class="n">backend</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"qpu"</span><span class="p">)</span> <span class="k">as</span> <span class="n">backend</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">freq_sweep</span><span class="p">:</span>
+        <span class="n">instruction</span> <span class="o">=</span> <span class="n">set_freq</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">run_instruction</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">instruction</span><span class="p">,</span> <span class="n">shots</span><span class="p">)</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">res</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">shots</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4b9f74ee">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq_sweep</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$\ket</span><span class="si">{0}</span><span class="s1">$ counts'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Frequency (Hz)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
