@@ -7857,9 +7857,18 @@ To understand how can we stablish the logic of a theoretical quantum computer on
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Before studying the superconducting qubit, we will briefly review how to describe a quantum electromagnetic field with Hamiltonians. As we said before, superconducting qubits are based o mesoscopic systems, these are man-made devices of macroscopic dimensions (contain a large number of atoms) with collective degrees of freedom that behave as a quantum system. One of the simplest is the superconducting LC circuit.</p>
-<div style="text-align: center;">
-<img alt="No description has been provided for this image" src="./media/LC.png" width="210"/>
-</div>
+<br/>
+<figure style="text-align: center; margin: auto; max-width: 720px;">
+<img alt="LC Circuit" src="./media/LC.png" style="display: block; margin: 0 auto;" width="240"/>
+<figcaption style="margin-top: 12px; font-size: 0.9em; color: #444; line-height: 1.5;">
+        P. Krantz, M. Kjaergaard, F. Yan, T. P. Orlando, S. Gustavsson, W. D. Oliver; 
+        A quantum engineer's guide to superconducting qubits.
+        Appl. Phys. Rev. 1 June 2019; 6 (2): 021318. 
+        <br/>
+<a href="https://doi.org/10.1063/1.5089550" style="color: #0066cc;" target="_blank">https://doi.org/10.1063/1.5089550</a>
+</figcaption>
+</figure>
+<br/>
 <p>In its classical description, the energy of the system oscillates between the electrical energy of the capacitor C and the magnetic energy of the inductor L, equivalent to the exchange of kinetic and potential energy in a classical harmonic oscillator. The generic energy in each element can be derived from:
 $$E(t)=\int_{-\infty}^tV(t')I(t')\ \mathrm{d}t',$$
 where $V$ and $I$ are the voltage and current measured in the element. To do the Hamiltonian characterization, we are going to define some generalized coordinates, the <strong>flux</strong> and <strong>charge</strong>:
@@ -7919,9 +7928,18 @@ $$H=\hbar\omega_r\Bigl(a^\dagger a+\frac{1}{2}\Bigl).$$</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Considering the energy eigenstates of the quantum LC system (eigenstates of $a^\dagger a$), $\{\ket{n}\}_{n=0}^\infty$, we could define the computational basis on the two lowest energy levels, $\ket{0}$ and $\ket{1}$, and apply pulses of photons with the transition energy $\hbar\omega_r$ to excite or relax the system, thus having control over its state. The main problem of this configuration is its harmonicity, as all energy levels are equally spaced. This means that we have no control over which excitantion is going to produce from a photon of energy $\hbar\omega_r$. Fortunately, there is a similar kind of device that helps mitigate this problem: the <strong>Josephson qubit circuit</strong>.</p>
-<div style="text-align: center;">
-<img alt="No description has been provided for this image" src="./media/Josephson.png" width="210"/>
-</div>
+<br/>
+<figure style="text-align: center; margin: auto; max-width: 720px;">
+<img alt="Josephson Junction" src="./media/Josephson.png" style="display: block; margin: 0 auto;" width="240"/>
+<figcaption style="margin-top: 12px; font-size: 0.9em; color: #444; line-height: 1.5;">
+        P. Krantz, M. Kjaergaard, F. Yan, T. P. Orlando, S. Gustavsson, W. D. Oliver; 
+        A quantum engineer's guide to superconducting qubits.
+        Appl. Phys. Rev. 1 June 2019; 6 (2): 021318. 
+        <br/>
+<a href="https://doi.org/10.1063/1.5089550" style="color: #0066cc;" target="_blank">https://doi.org/10.1063/1.5089550</a>
+</figcaption>
+</figure>
+<br/>
 <p>The <strong>Josephson junction</strong> is a set of two superconducting electrodes separated by a very thin oxide layer (insulator) that acts as a non-linear inductor (which breaks the harmonicity). The Josephson qubit circuit is composed of a Josephson junction in parallel to a capacitor, in a similar configurations as the LC circuit. At temperatures of order $\leq$ 100 mK, the electrons in the junction's sides condense in Cooper pairs, pair of electrons that behave as they are attracted to eachother due to interactions with the positive ions of the conductor in superconducting regime. <br/>
 <br/>
 We can define the generalized flux of the junction $\phi$ as:
@@ -8368,9 +8386,17 @@ $$U(\theta,\phi,\lambda)=R_Z(\phi)R_Y(\theta)R_Z(\lambda)=\begin{pmatrix}
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>The gates from before are some ideal representation of the operations we want to perform over the qubit, but it's real implementation is not direct for most cases and not general to every quantum device. Here we'll focus on the most usual pulse driving scheme and hardware capabilities.<br/></p>
-<div style="text-align: center;">
-<img alt="No description has been provided for this image" src="./media/driving.png" width="420"/>
-</div>
+<br/>
+<figure style="text-align: center; margin: auto; max-width: 720px;">
+<img alt="Transmon Driving" src="./media/driving.png" style="display: block; margin: 0 auto;" width="480"/>
+<figcaption style="margin-top: 12px; font-size: 0.9em; color: #444; line-height: 1.5;">
+        P. Krantz, M. Kjaergaard, F. Yan, T. P. Orlando, S. Gustavsson, W. D. Oliver; 
+        A quantum engineer's guide to superconducting qubits.
+        Appl. Phys. Rev. 1 June 2019; 6 (2): 021318. 
+        <br/>
+<a href="https://doi.org/10.1063/1.5089550" style="color: #0066cc;" target="_blank">https://doi.org/10.1063/1.5089550</a>
+</figcaption>
+</figure>
 <br/>
 <p>Let's from now on make the (big) assumtion that our qubit is totally isolated and described by the Hamiltonian:
 $$H_q=-\frac{\hbar\omega_q}{2}\sigma_z,$$
@@ -8788,9 +8814,18 @@ H_{d,1}&amp;=\Omega_c V_{d,1}(t)\ \left(\sigma_x\otimes I + \nu^-_1 I\otimes\sig
 H_{d,2}&amp;=\Omega_c V_{d,2}(t)\ I\otimes\sigma_x.
 \end{align*}
 $$</p>
-<div style="text-align: center;">
-<img alt="No description has been provided for this image" src="./media/qubit_coupling.png" width="380"/>
-</div>
+<br/>
+<figure style="text-align: center; margin: auto; max-width: 720px;">
+<img alt="Two Qubit Coupling" src="./media/qubit_coupling.png" style="display: block; margin: 0 auto;" width="380"/>
+<figcaption style="margin-top: 12px; font-size: 0.9em; color: #444; line-height: 1.5;">
+        P. Krantz, M. Kjaergaard, F. Yan, T. P. Orlando, S. Gustavsson, W. D. Oliver; 
+        A quantum engineer's guide to superconducting qubits.
+        Appl. Phys. Rev. 1 June 2019; 6 (2): 021318. 
+        <br/>
+<a href="https://doi.org/10.1063/1.5089550" style="color: #0066cc;" target="_blank">https://doi.org/10.1063/1.5089550</a>
+</figcaption>
+</figure>
+<br/>
 </div>
 </div>
 </div>
