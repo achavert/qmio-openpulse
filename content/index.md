@@ -20,10 +20,6 @@ Pulses give grain-level access to the transmon dynamics, like excitation to high
 Entanglement is one of the pillars behind quantum computing. On this notebook we will explore how the entanglement between qubit systems is physically achieved, which are the most common methods and how to implement some of them with OpenPulse.
 
 
-
-### 4. Advanced examples
-
-
 ## Documentation
 
 [OpenPulse grammar](notebookE1.md)
