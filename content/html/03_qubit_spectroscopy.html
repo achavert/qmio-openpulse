@@ -8342,7 +8342,7 @@ Anharmonicity: -1.8100e+08 Hz
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2nd-excited-state-gate-calibration">2nd excited state gate calibration<a class="anchor-link" href="#2nd-excited-state-gate-calibration">¶</a></h3><p>Now, we'll try to calibrate a $\ket{0}\rightarrow\ket{2}$ gate.</p>
+<h3 id="TPA-gaussian-pulse-calibration">TPA gaussian pulse calibration<a class="anchor-link" href="#TPA-gaussian-pulse-calibration">¶</a></h3><p>Now, we'll try to calibrate a $\ket{0}\rightarrow\ket{2}$ gate.</p>
 </div>
 </div>
 </div>
@@ -8494,7 +8494,7 @@ Gaussian calibration fidelity: 0.93714
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Excited-states-on-the-bisector">Excited states on the bisector<a class="anchor-link" href="#Excited-states-on-the-bisector">¶</a></h3>
+<h3 id="Discriminating-excited-states">Discriminating excited states<a class="anchor-link" href="#Discriminating-excited-states">¶</a></h3>
 </div>
 </div>
 </div>
@@ -8785,12 +8785,22 @@ Job started</pre>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>We can observe that the two distributions are significantly different. Let's break it down:</p>
 <ul>
-<li><p>On the blue plot we can see that we recover mainly the state $\ket{0}$, with some residual population on $\ket{1}$. This is what we expected form the X gate, taking into account its low fidelity.</p>
+<li><p>On the blue plot, we can see that we recover mainly the state $\ket{0}$, with some residual population on $\ket{1}$. This is what we expected form the X gate, taking into account its fidelity.</p>
 </li>
-<li><p>On the orange plot we see that only a small population returns to $\ket{0}$, while the majority stays on the negative part of the bisector. This means that X gate didn't have a significant effect on the state, so we can deduce that the qubit wasn't in $\ket{1}$. The small population in $\ket{0}$ can be explained by some residual non-detectable population of $\ket{1}$ in the preparation of $\ket{2}$.</p>
+<li><p>On the orange plot, we see that only a small population returns to $\ket{0}$, while the majority stays on the negative part of the bisector. This means that X gate didn't have a significant effect on the state, so we can deduce that the qubit wasn't in $\ket{1}$. The small population in $\ket{0}$ can be explained by some residual non-detectable population of $\ket{1}$ in the preparation of $\ket{2}$.</p>
 </li>
 </ul>
 <p>This concludes that the pulse we calibrated for the $\ket{0}\rightarrow\ket{2}$ transition effectively access that higher level, even though we can not directly differentiate it from $\ket{1}$ in the measurement bisector.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ebeddc10">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
