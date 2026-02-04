@@ -8494,7 +8494,7 @@ Gaussian calibration fidelity: 0.93714
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Excited-statets-on-the-bisector">Excited statets on the bisector<a class="anchor-link" href="#Excited-statets-on-the-bisector">¶</a></h3>
+<h3 id="Excited-states-on-the-bisector">Excited states on the bisector<a class="anchor-link" href="#Excited-states-on-the-bisector">¶</a></h3>
 </div>
 </div>
 </div>
@@ -8505,7 +8505,13 @@ Gaussian calibration fidelity: 0.93714
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Finally, let's compare states $\ket{1}$ and $\ket{2}$ on the bisector:</p>
+<p>Finally, let's compare states $\ket{1}$ and $\ket{2}$ on the bisector. To do this, we'll prepare two sets of instructions:</p>
+<ul>
+<li><p>A calibrated gaussian 0-1 pulse -with fidelity 0.931- equivalent to an X gate.</p>
+</li>
+<li><p>A galibrated gaussian 0-2 pulse -with fidelity 0.937- that populates the state $\ket{2}$.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -8514,37 +8520,66 @@ Gaussian calibration fidelity: 0.93714
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [42]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">qubit</span> <span class="o">=</span> <span class="mi">8</span>
+
+<span class="sd">'''</span>
+<span class="sd">    ------------------------------------</span>
+<span class="sd">    Calibration for a gaussian 0-1 pulse</span>
+<span class="sd">    ------------------------------------</span>
+<span class="sd">'''</span>
+<span class="n">freq01</span> <span class="o">=</span> <span class="mf">4.3910e9</span> <span class="c1"># Hz</span>
+<span class="n">amp01</span> <span class="o">=</span> <span class="mf">0.04646</span>
+<span class="n">duration01</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1"># dt</span>
+<span class="n">sigma01</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># dt</span>
+
 <span class="n">X01</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'''</span>
-<span class="s1">    OPENQASM 3;</span>
-<span class="s1">    x $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
+<span class="s1">        OPENQASM 3;</span>
+<span class="s1">    defcalgrammar "openpulse";</span>
+<span class="s1">        </span>
+<span class="s1">    cal </span><span class="se">{{</span>
+<span class="s1">        extern frame q8_drive;</span>
+<span class="s1">        frame q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive_01 = newframe(q8_drive, </span><span class="si">{</span><span class="n">freq01</span><span class="si">}</span><span class="s1">, 0.0);</span>
+<span class="s1">        waveform wf01 = gaussian(</span><span class="si">{</span><span class="n">amp01</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">duration01</span><span class="si">}</span><span class="s1">dt, </span><span class="si">{</span><span class="n">sigma01</span><span class="si">}</span><span class="s1">dt);</span>
+<span class="s1">    </span><span class="se">}}</span>
+<span class="s1">    </span>
+<span class="s1">    defcal x01 $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="se">{{</span>
+<span class="s1">        play(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive_01, wf01);</span>
+<span class="s1">    </span><span class="se">}}</span>
+
+<span class="s1">    x01 $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
 <span class="s1">    measure $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
 <span class="s1">    '''</span>
 
-<span class="n">freq</span> <span class="o">=</span> <span class="mf">8.6010e+09</span><span class="o">/</span><span class="mi">2</span> <span class="c1"># Hz</span>
-<span class="n">amp</span> <span class="o">=</span> <span class="mf">0.21818</span>
-<span class="n">duration</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1"># dt</span>
-<span class="n">sigma</span> <span class="o">=</span> <span class="mi">64</span> <span class="c1"># st</span>
+
+<span class="sd">'''</span>
+<span class="sd">    ------------------------------------</span>
+<span class="sd">    Calibration for a gaussian 0-2 pulse</span>
+<span class="sd">    ------------------------------------</span>
+<span class="sd">'''</span>
+
+<span class="n">freq02</span> <span class="o">=</span> <span class="mf">4.3005e9</span> <span class="c1"># Hz</span>
+<span class="n">amp02</span> <span class="o">=</span> <span class="mf">0.21818</span>
+<span class="n">duration02</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1"># dt</span>
+<span class="n">sigma02</span> <span class="o">=</span> <span class="mi">64</span> <span class="c1"># st</span>
 
 <span class="n">X02</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'''</span>
 <span class="s1">    OPENQASM 3;</span>
 <span class="s1">    defcalgrammar "openpulse";</span>
 <span class="s1">        </span>
 <span class="s1">    cal </span><span class="se">{{</span>
-<span class="s1">        extern frame q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive;</span>
-<span class="s1">        set_frequency(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive, </span><span class="si">{</span><span class="n">freq</span><span class="si">}</span><span class="s1">);</span>
-<span class="s1">        waveform wf = gaussian(</span><span class="si">{</span><span class="n">amp</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s1">dt, </span><span class="si">{</span><span class="n">sigma</span><span class="si">}</span><span class="s1">dt);</span>
+<span class="s1">        extern frame q8_drive;</span>
+<span class="s1">        frame q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive_02 = newframe(q8_drive, </span><span class="si">{</span><span class="n">freq02</span><span class="si">}</span><span class="s1">, 0.0);</span>
+<span class="s1">        waveform wf02 = gaussian(</span><span class="si">{</span><span class="n">amp02</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">duration02</span><span class="si">}</span><span class="s1">dt, </span><span class="si">{</span><span class="n">sigma02</span><span class="si">}</span><span class="s1">dt);</span>
 <span class="s1">    </span><span class="se">}}</span>
 
-<span class="s1">    defcal custom_pulse $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="se">{{</span>
-<span class="s1">        play(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive, wf);</span>
+<span class="s1">    defcal x02 $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="se">{{</span>
+<span class="s1">        play(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive_02, wf02);</span>
 <span class="s1">    </span><span class="se">}}</span>
-
-<span class="s1">    custom_pulse $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
-<span class="s1">    x $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
+<span class="s1">    </span>
+<span class="s1">    x02 $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
 <span class="s1">    measure $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
 <span class="s1">    '''</span>
 </pre></div>
@@ -8557,7 +8592,7 @@ Gaussian calibration fidelity: 0.93714
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [43]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">shots</span> <span class="o">=</span> <span class="mi">10000</span>
@@ -8576,7 +8611,7 @@ Gaussian calibration fidelity: 0.93714
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
+<pre>Waiting for resources
 Job started</pre>
 </div>
 </div>
@@ -8587,11 +8622,12 @@ Job started</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [47]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">res01</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">'$|1\rangle$'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">res02</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">'$|2\rangle$'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">res01</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">'$|0\rangle\rightarrow|1\rangle$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">res02</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">'$|0\rangle\rightarrow|2\rangle$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'counts'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -8606,19 +8642,155 @@ Job started</pre>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
-<img alt="No description has been provided for this image" class="jp-needs-light-background" src="data:image/png;base64,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"/>
+<img alt="No description has been provided for this image" class="jp-needs-light-background" src="data:image/png;base64,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"/>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9eb05d47">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=73eb06ed">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Mollow-peaks">Mollow peaks<a class="anchor-link" href="#Mollow-peaks">¶</a></h3>
+<p>As we said before, we can't see a visible difference, because $\ket{1}$ and $\ket{2}$ project to the same region of the bisector. But we can perform some operations to determine that these are different states. For example, we can apply after both operations another X gate -the 0-1 transition- and check whether we recover $\ket{0}$ or not.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=212d99ea">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">X01_test</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'''</span>
+<span class="s1">        OPENQASM 3;</span>
+<span class="s1">    defcalgrammar "openpulse";</span>
+<span class="s1">        </span>
+<span class="s1">    cal </span><span class="se">{{</span>
+<span class="s1">        extern frame q8_drive;</span>
+<span class="s1">        frame q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive_01 = newframe(q8_drive, </span><span class="si">{</span><span class="n">freq01</span><span class="si">}</span><span class="s1">, 0.0);</span>
+<span class="s1">        waveform wf01 = gaussian(</span><span class="si">{</span><span class="n">amp01</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">duration01</span><span class="si">}</span><span class="s1">dt, </span><span class="si">{</span><span class="n">sigma01</span><span class="si">}</span><span class="s1">dt);</span>
+<span class="s1">    </span><span class="se">}}</span>
+<span class="s1">    </span>
+<span class="s1">    defcal x01 $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="se">{{</span>
+<span class="s1">        play(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive_01, wf01);</span>
+<span class="s1">    </span><span class="se">}}</span>
+
+<span class="s1">    x01 $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
+<span class="s1">    x01 $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
+<span class="s1">    measure $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
+<span class="s1">    '''</span>
+
+<span class="n">X02_test</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'''</span>
+<span class="s1">    OPENQASM 3;</span>
+<span class="s1">    defcalgrammar "openpulse";</span>
+<span class="s1">        </span>
+<span class="s1">    cal </span><span class="se">{{</span>
+<span class="s1">        extern frame q8_drive;</span>
+<span class="s1">        </span>
+<span class="s1">        frame q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive_01 = newframe(q8_drive, </span><span class="si">{</span><span class="n">freq01</span><span class="si">}</span><span class="s1">, 0.0);</span>
+<span class="s1">        waveform wf01 = gaussian(</span><span class="si">{</span><span class="n">amp01</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">duration01</span><span class="si">}</span><span class="s1">dt, </span><span class="si">{</span><span class="n">sigma01</span><span class="si">}</span><span class="s1">dt);</span>
+<span class="s1">        </span>
+<span class="s1">        frame q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive_02 = newframe(q8_drive, </span><span class="si">{</span><span class="n">freq02</span><span class="si">}</span><span class="s1">, 0.0);</span>
+<span class="s1">        waveform wf02 = gaussian(</span><span class="si">{</span><span class="n">amp02</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">duration02</span><span class="si">}</span><span class="s1">dt, </span><span class="si">{</span><span class="n">sigma02</span><span class="si">}</span><span class="s1">dt);</span>
+<span class="s1">    </span><span class="se">}}</span>
+<span class="s1">    </span>
+<span class="s1">    defcal x01 $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="se">{{</span>
+<span class="s1">        play(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive_01, wf01);</span>
+<span class="s1">    </span><span class="se">}}</span>
+
+<span class="s1">    defcal x02 $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="se">{{</span>
+<span class="s1">        play(q</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">_drive_02, wf02);</span>
+<span class="s1">    </span><span class="se">}}</span>
+<span class="s1">    </span>
+<span class="s1">    x02 $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
+<span class="s1">    x01 $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
+<span class="s1">    measure $</span><span class="si">{</span><span class="n">qubit</span><span class="si">}</span><span class="s1">;</span>
+<span class="s1">    '''</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a3007dab">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">shots</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="k">with</span> <span class="n">service</span><span class="o">.</span><span class="n">backend</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"qpu"</span><span class="p">)</span> <span class="k">as</span> <span class="n">backend</span><span class="p">:</span>  
+    <span class="n">res01_test</span> <span class="o">=</span> <span class="n">run_instruction</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">X01_test</span><span class="p">,</span> <span class="n">shots</span><span class="p">)</span>
+    <span class="n">res02_test</span> <span class="o">=</span> <span class="n">run_instruction</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">X02_test</span><span class="p">,</span> <span class="n">shots</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Waiting for resources
+Job started</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=36ad0dd4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">res01_test</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">'$|1\rangle\rightarrow|0\rangle$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">res02_test</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">'$|2\rangle\rightarrow|2\rangle$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'counts'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
+<img alt="No description has been provided for this image" class="jp-needs-light-background" src="data:image/png;base64,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"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7218e369">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>We can observe that the two distributions are significantly different. Let's break it down:</p>
+<ul>
+<li><p>On the blue plot we can see that we recover mainly the state $\ket{0}$, with some residual population on $\ket{1}$. This is what we expected form the X gate, taking into account its low fidelity.</p>
+</li>
+<li><p>On the orange plot we see that only a small population returns to $\ket{0}$, while the majority stays on the negative part of the bisector. This means that X gate didn't have a significant effect on the state, so we can deduce that the qubit wasn't in $\ket{1}$. The small population in $\ket{0}$ can be explained by some residual non-detectable population of $\ket{1}$ in the preparation of $\ket{2}$.</p>
+</li>
+</ul>
+<p>This concludes that the pulse we calibrated for the $\ket{0}\rightarrow\ket{2}$ transition effectively access that higher level, even though we can not directly differentiate it from $\ket{1}$ in the measurement bisector.</p>
 </div>
 </div>
 </div>
