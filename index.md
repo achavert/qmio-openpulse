@@ -1,6 +1,6 @@
 ---
-layout: default
 title: Home
+layout: index
 ---
  
 ## Pulse-level control at Qmio with OpenPulse
