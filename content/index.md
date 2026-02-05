@@ -1,6 +1,6 @@
 ---
 title: Notebooks
-layout: default
+layout: index
 ---
 
 
