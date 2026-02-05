@@ -1,5 +1,5 @@
 ---
-title: Introduction to qubit physics
+title: Single-qubit driving
 layout: default
 ---
 
