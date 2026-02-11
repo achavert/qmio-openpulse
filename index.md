@@ -5,11 +5,13 @@ layout: index
  
 ## Pulse-level control at Qmio with OpenPulse
 
-This course is an introduction to pulse-level control on superconducting qubits. You'll learn the mechanism behind quantum gate implementation through microwave pulses, performing practical examples with OpenPulse on Qmio. Along with the presential session at Cesga, estimated to be 4 hours long, a set of notebooks and documentation is given in order to follow and expand the contents of the course. 
+Quantum Computing uses the properties of quantum systems to perform operations under a new logic paradigm. These operations, called quantum gates, are abstract linear operations on qubit spaces, and by composing them, we can build quantum algorithms to solve problems in a different way from the classical solutions. In reality, we need to encode the qubits on real physical systems (transmons, trapped ions, cold atoms...) and their quantum gates will represent specific processes performed over them, like applying magnetic fields, lasers, etc. <br>
+<br>
+On this course, we'll learn how Qmio physically implements its quantum gates through microwave pulses. Starting from the superconducting qubit formulation, and understanding how pulses perform these operations, we'll see how to develop experiments at pulse-level in Qmio with the OpenPulse grammar from OpenQASM.  
 
 
 ## Setup
-Access the Qmio CPD nodes at CESGA (through a @qmio.cesga.es account):
+First, to access the Qmio CPD nodes at CESGA (through a @qmio.cesga.es account) type:
 
 ```ssh <user>@qmio.cesga.es```
 
@@ -29,7 +31,7 @@ jupyter notebook --ip=$(hostname -i) --port=8889 &> opa.out &
 cat opa.out
 ```
 
-Copy the first link returned and paste it on your browser. You are ready to execute the notebooks on this course, you can find them in the ```\notebooks``` folder in this repository.
+Copy the first link printed and paste it on your browser. Now you are ready to execute the notebooks of this course, you can find them in the ```\notebooks``` folder from this repository.
 
 
 ## Contents
