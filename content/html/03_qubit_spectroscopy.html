@@ -7827,44 +7827,13 @@ $ \newcommand{\bn}{{\bf n}} $</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=75ab51bf">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.1.-Measuring-the-anharmonicity">3.1. Measuring the anharmonicity<a class="anchor-link" href="#3.1.-Measuring-the-anharmonicity">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8b46d283">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>When we studied pulses for gate implementation, made a series of assumtions:</p>
-<ul>
-<li><p>We only considered the two computational energy levels of the transmon.</p>
-</li>
-<li><p>We set the driving frequency at the resonance of the qubit.</p>
-</li>
-</ul>
-<p>But in reality, transmons have higher energy levels that can be accessed by microwave pulses. For example, the second excited state $\ket{2}$ can be reached if we know the anharmonicity $\alpha$ of the qubit. We could apply a pulse of frequency $\omega_q+\alpha$ to promote from $\ket{1}$ to $\ket{2}$, or one with frequency $2\omega_q+\alpha$ to promote directly from $\ket{0}$. But, how can we measure these higher energy states? These states also produce a shift in the energy levels of the driven resonator, inducing a distinct observable response. When working with IQ-mixing readout, this would result in clouds on the IQ plane different from $\ket{0}$ and $\ket{1}$.<br/>
-<br/></p>
-<p>Unfortunatetly, in Qmio we don't have access to these IQ measurements, only to their projection to the $\ket{0}$-$\ket{1}$ bisector. This is a problem especially for the case of $\ket{2}$, as its cloud lands right above $\ket{1}$, making them practically undistinguishable from their bisector projection. This means that we can't directly measure $\omega_{12}$ or even $\omega_{02}$, as it would lead to a high error from the readout.</p>
-</div>
-</div>
-</div>
-</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b559593f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.2.-Spectroscopy-with-OpenPulse">3.2. Spectroscopy with OpenPulse<a class="anchor-link" href="#3.2.-Spectroscopy-with-OpenPulse">¶</a></h2>
+<h2 id="3.1.-Spectroscopy-with-OpenPulse">3.1. Spectroscopy with OpenPulse<a class="anchor-link" href="#3.1.-Spectroscopy-with-OpenPulse">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8060,7 +8029,27 @@ Job started</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.3.-Experiments">3.3. Experiments<a class="anchor-link" href="#3.3.-Experiments">¶</a></h2>
+<h2 id="3.3.-Exploring-higher-energy-states">3.3. Exploring higher energy states<a class="anchor-link" href="#3.3.-Exploring-higher-energy-states">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4381371d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>When we studied pulses for gate implementation, made a series of assumtions:</p>
+<ul>
+<li><p>We only considered the two computational energy levels of the transmon.</p>
+</li>
+<li><p>We set the driving frequency at the resonance of the qubit.</p>
+</li>
+</ul>
+<p>But in reality, transmons have higher energy levels that can be accessed by microwave pulses. For example, the second excited state $\ket{2}$ can be reached if we know the anharmonicity $\alpha$ of the qubit. We could apply a pulse of frequency $\omega_q+\alpha$ to promote from $\ket{1}$ to $\ket{2}$, or one with frequency $2\omega_q+\alpha$ to promote directly from $\ket{0}$. But, how can we measure these higher energy states? These states also produce a shift in the energy levels of the driven resonator, inducing a distinct observable response. When working with IQ-mixing readout, this would result in clouds on the IQ plane different from $\ket{0}$ and $\ket{1}$.<br/>
+<br/></p>
+<p>Unfortunatetly, in Qmio we don't have access to these IQ measurements, only to their projection to the $\ket{0}$-$\ket{1}$ bisector. This is a problem especially for the case of $\ket{2}$, as its cloud lands right above $\ket{1}$, making them practically undistinguishable from their bisector projection. This means that we can't directly measure $\omega_{12}$, as it would lead to a high error from the readout.</p>
 </div>
 </div>
 </div>
@@ -8791,16 +8780,6 @@ Job started</pre>
 </li>
 </ul>
 <p>This concludes that the pulse we calibrated for the $\ket{0}\rightarrow\ket{2}$ transition effectively access that higher level, even though we can not directly differentiate it from $\ket{1}$ in the measurement bisector.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ebeddc10">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
