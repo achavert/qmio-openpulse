@@ -1,6 +1,6 @@
 # Pulse-level control at Qmio with OpenPulse
 
-Quantum Computing uses the properties of quantum systems to perform operations under a new logic paradigm. These operations, called quantum gates, are abstract linear operations on qubit spaces, and by composing them, we can build quantum algorithms to solve problems in a different way from the classical solutions. In reality, we need to encode the qubits on real physical systems (transmons, trapped ions, cold atoms...) and their quantum gates will represent specific processes performed over them, like applying magnetic fields, lasers, etc. <br>
+Quantum Computing uses the properties of quantum systems to perform operations under a new logic paradigm. These operations, called quantum gates, are abstract linear operations on qubit spaces, and by composing them, we can build quantum algorithms to solve problems in a different way to the classical solutions. In reality, we need to encode the qubits on real physical systems (transmons, trapped ions, cold atoms...) and their quantum gates will represent specific processes performed over them, like applying magnetic fields, lasers, etc. <br>
 <br>
 On this course, we'll learn how Qmio physically implements its quantum gates through microwave pulses. Starting from the superconducting qubit formulation, and understanding how pulses perform these operations, we'll see how to develop experiments at pulse-level in Qmio with the OpenPulse grammar from OpenQASM.  
 
