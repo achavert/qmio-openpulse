@@ -21,6 +21,7 @@ Entanglement is one of the pillars behind quantum computing. On this notebook we
 
 
 ## Practices
+[Practice 1: Measuring T1](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice1.ipynb)
 
 <a href="notebooks/practices/practice1.ipynb" download>Practice 1: Measuring T1</a>
 
