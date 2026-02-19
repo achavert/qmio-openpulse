@@ -4,7 +4,7 @@ layout: index
 ---
 
 
-## Course
+## Notebooks
 
 ### [1. Introduction to qubit physics](notebook01.md)
 To understand how quantum gates are implemented, we first need to examine the qubit's physical system. In this notebook, we will see how a qubit is encoded in superconducting circuits, which approximations can be used depending on our goals, what effects arise from the interactions with the thermal bath, how the qubit-resonator interaction enables measurements, and how to define the parameters of this systems in OpenPulse.
@@ -19,6 +19,10 @@ Pulses give grain-level access to the transmon dynamics, like excitation to high
 ### [4. Two-qubit pulse control](notebook04.md)
 Entanglement is one of the pillars behind quantum computing. On this notebook we will explore how the entanglement between qubit systems is physically achieved, which are the most common methods and how to implement some of them with OpenPulse.
 
+
+## Practices
+
+### [Practice 1: Measuring T1](practice1.md)
 
 ## Documentation
 
