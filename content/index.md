@@ -26,7 +26,9 @@ Entanglement is one of the pillars behind quantum computing. On this notebook we
 
 ### [Practice 2: Pulse configuration](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice2.ipynb)
 
-### [Practice 3: Pi-pulse calibration](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice3.ipynb)
+### [Practice 3: SX calibration](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice3.ipynb)
+
+### [Practice 4: Applying an RX(pi/4) with virtual RZ](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice4.ipynb)
 
 
 ## Documentation
