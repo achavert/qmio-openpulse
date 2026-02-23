@@ -37,11 +37,6 @@ Copy the first link printed and paste it on your browser. Now you are ready to e
 
 This course is composed of four notebooks explaining concepts about superconducting qubit systems and pulse-level control, aimed to illustrate how the native quantum gates are physically implemented at Qmio. There are also four practices to showcase the basic functions from OpenPulse, intended to be solved on the in-person course. A revised documentation for OpenPulse grammar is included, bringing attention to the particularities of the Qmio system, and extended notes for pulse-control theory, with a more detailed development of the concepts seen on the course. 
 
-
-## Presentation 
-
-[Link to the slides](https://www.canva.com/design/DAHBdmQNDFE/8PaGsgNXGk9oKSen7-YmTQ/edit?utm_content=DAHBdmQNDFE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-
 ## References and acknowledgements
 
 This course was produced as part of the QUORUM SPAIN project at the Galician Supercomputing Center (CESGA).<br>
