@@ -172,7 +172,9 @@ body {
 .footer-logos {
   display: flex;
   align-items: center;
+  justify-content: center; /* Add this line to center horizontally */
   gap: 2rem;
+  margin-top: 1rem; /* Optional: Adds a little space between the text and logos */
 }
 
 .cdti-logo {
