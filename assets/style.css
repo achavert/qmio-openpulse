@@ -157,9 +157,6 @@ body {
 }
 
 
-
-
-
 /*------------ Site Fotter --------------*/
 .site-footer {
   text-align: center;
@@ -167,7 +164,6 @@ body {
   font-size: 0.9em;
   color: #666;
 }
-
 
 .footer-logos {
   display: flex;
