@@ -74,6 +74,9 @@ body {
   width: auto;  
 }
 
+
+
+
 /*------------ Contents --------------*/
 
 
@@ -165,5 +168,20 @@ body {
   color: #666;
 }
 
+
+.footer-logos {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cdti-logo {
+  height: 60px;   
+  width: auto;   
+}
+.pr-logo {
+  height: 80px;   
+  width: auto;  
+}
 
 
