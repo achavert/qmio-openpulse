@@ -80,24 +80,31 @@ p {
 
 
 
-.nav-links {
-  margin-top: 0.6rem;
-  display: flex;
-  gap: 1.2rem;
-}
-
 .nav-links a {
   color: rgba(255,255,255,0.9);
   text-decoration: none;
   font-size: 0.95rem;
   padding: 3px 0;
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s ease;
+  position: relative;
 }
 
-.nav-links a:hover {
-  border-bottom: 2px solid white;
+/* hidden underline */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width 0.2s ease;
 }
+
+/* show underline on hover */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
 .site-logos {
   display: flex;
   align-items: center;
