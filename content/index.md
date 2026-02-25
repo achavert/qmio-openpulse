@@ -27,7 +27,6 @@ Entanglement is one of the pillars behind quantum computing. On this notebook we
 ### [Pulse control theory notes](notebookE2.md)
 
 <br>
-<br>
 
 # In-person course
 
