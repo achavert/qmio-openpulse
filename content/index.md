@@ -3,6 +3,7 @@ title: Notebooks
 layout: index
 ---
 
+# Contents
 
 ## Notebooks
 
@@ -30,9 +31,12 @@ Entanglement is one of the pillars behind quantum computing. On this notebook we
 
 
 
-## In-person course
+# In-person course
 
-[Link to the slides](https://www.canva.com/design/DAHBdmQNDFE/8PaGsgNXGk9oKSen7-YmTQ/edit?utm_content=DAHBdmQNDFE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+## Slides
+[Link to canva](https://www.canva.com/design/DAHBdmQNDFE/8PaGsgNXGk9oKSen7-YmTQ/edit?utm_content=DAHBdmQNDFE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+[Link to download](https://github.com/achavert/qmio-openpulse/blob/main/practices/Curso%20control%20por%20pulsos%20Qmio.pdf)
 
 ## Practices
 
