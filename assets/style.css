@@ -183,9 +183,11 @@ body {
 /*------------ Site Fotter --------------*/
 .site-footer {
   text-align: center;
-  padding: 1rem;
+  padding: 2rem 1rem;
   font-size: 0.9em;
-  color: #666;
+  color: #6b7280;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 3rem;
 }
 
 .footer-logos {
