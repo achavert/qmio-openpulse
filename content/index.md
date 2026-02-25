@@ -35,7 +35,7 @@ Here you have access to the materials for the in-person course, including the pr
 ## Slides
 [Link to web version](https://www.canva.com/design/DAHBdmQNDFE/8PaGsgNXGk9oKSen7-YmTQ/edit?utm_content=DAHBdmQNDFE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
-[Link to pdf version](https://github.com/achavert/qmio-openpulse/blob/main/practices/Curso%20control%20por%20pulsos%20Qmio.pdf)
+[Link to PDF version](https://github.com/achavert/qmio-openpulse/blob/main/practices/Curso%20control%20por%20pulsos%20Qmio.pdf)
 
 ## Practices
 
