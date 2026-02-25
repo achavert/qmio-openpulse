@@ -82,7 +82,11 @@ body {
 .site-logos {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
+}
+
+.site-logos img {
+  opacity: 0.95;
 }
 
 .cesga-logo {
