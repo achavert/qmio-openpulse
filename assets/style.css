@@ -67,6 +67,10 @@ body {
   line-height: 1.2;
 }
 
+.site-title a:hover {
+  opacity: 0.9;
+}
+
 .nav-links {
   margin-top: 0.6rem;
   display: flex;
