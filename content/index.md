@@ -28,6 +28,8 @@ Entanglement is one of the pillars behind quantum computing. On this notebook we
 
 <br>
 
+---
+
 # [Course materials](https://github.com/achavert/qmio-openpulse/blob/main/practices/)
 
 Here you have access to the materials for the in-person course, including the presentation in PDF and web format, and the exercises developed during the session. You can find the completed exercises in the repository.
