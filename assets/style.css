@@ -57,8 +57,14 @@ body {
 .site-title a {
   color: white;
   text-decoration: none;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.site-title {
+  margin: 0;
+  line-height: 1.2;
 }
 
 .nav-links {
