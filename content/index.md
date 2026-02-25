@@ -30,14 +30,13 @@ Entanglement is one of the pillars behind quantum computing. On this notebook we
 
 # Course materials
 
-Here you have access to the materials for the in-person course, including the presentation in PDF and web format, and the exercises developed during the session. You can find the completed exercises in the repository
-
+Here you have access to the materials for the in-person course, including the presentation in PDF and web format, and the exercises developed during the session. You can find the completed exercises in the repository.
 ## Slides
 [Link to web version](https://www.canva.com/design/DAHBdmQNDFE/8PaGsgNXGk9oKSen7-YmTQ/edit?utm_content=DAHBdmQNDFE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 [Link to pdf version](https://github.com/achavert/qmio-openpulse/blob/main/practices/Curso%20control%20por%20pulsos%20Qmio.pdf)
 
-## Practices
+## [Practices](https://github.com/achavert/qmio-openpulse/blob/main/practices/)
 
 ### [Practice 1: Measuring T1](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice1.ipynb)
 
