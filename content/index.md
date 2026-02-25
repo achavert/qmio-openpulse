@@ -5,6 +5,8 @@ layout: index
 
 # Contents
 
+These notebooks introduce the physical principles and pulse-level techniques used to control superconducting qubits on Qmio. They progressively move from the underlying physics of the qubit system to practical pulse implementations, spectroscopy techniques, and multi-qubit control. Along the way, we will connect the theoretical description of superconducting circuits with the OpenPulse framework, illustrating how low-level pulse programming can be used to study qubit dynamics, calibrate gates, and implement quantum operations directly at the hardware level.
+
 ## Notebooks
 
 ### [1. Introduction to qubit physics](notebook01.md)
@@ -30,7 +32,8 @@ Entanglement is one of the pillars behind quantum computing. On this notebook we
 
 # [Course materials](https://github.com/achavert/qmio-openpulse/blob/main/practices/)
 
-Here you have access to the materials for the in-person course, including the presentation in PDF and web format, and the exercises developed during the session. You can find the completed exercises in the repository.
+This section provides access to the materials used in the in-person course, including the presentation (available in both web and PDF formats) and the hands-on exercises developed during the session. The repository also contains the completed versions of the exercises for reference.
+
 ## Slides
 [Link to web version](https://www.canva.com/design/DAHBdmQNDFE/8PaGsgNXGk9oKSen7-YmTQ/edit?utm_content=DAHBdmQNDFE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
@@ -39,12 +42,16 @@ Here you have access to the materials for the in-person course, including the pr
 ## Practices
 
 ### [Practice 1: Measuring T1](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice1.ipynb)
+Measure the energy relaxation time $T_1$ of a qubit and analyze how the excited state population decays over time.
 
 ### [Practice 2: Pulse configuration](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice2.ipynb)
+Explore how control pulses are defined and configured to drive qubit dynamics at the pulse level.
 
-### [Practice 3: SX calibration](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice3.ipynb)
+### [Practice 3: X gate calibration](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice3.ipynb)
+Calibrate the X gate by tuning pulse parameters and analyzing the resulting qubit response.
 
 ### [Practice 4: Applying an RX(pi/4) with virtual RZ](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice4.ipynb)
+Implement an $R_X(\pi/4)$ rotation using pulse-level control combined with virtual $R_Z$ frame updates.
 
 
 
