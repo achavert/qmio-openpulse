@@ -42,7 +42,7 @@ This section provides access to the materials used in the in-person course, incl
 ## Practices
 
 ### [Practice 1: Measuring T1](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice1.ipynb)
-Measure the energy relaxation time \(T_1\) of a qubit and analyze how the excited state population decays over time.
+Measure the energy relaxation time T1 of a qubit and analyze how the excited state population decays over time.
 
 ### [Practice 2: Pulse configuration](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice2.ipynb)
 Explore how control pulses are defined and configured to drive qubit dynamics at the pulse level.
@@ -51,7 +51,7 @@ Explore how control pulses are defined and configured to drive qubit dynamics at
 Calibrate the X gate by tuning pulse parameters and analyzing the resulting qubit response.
 
 ### [Practice 4: Applying an RX(pi/4) with virtual RZ](https://github.com/achavert/qmio-openpulse/blob/main/practices/practice4.ipynb)
-Implement an \(R_X(\pi/4)\) rotation using pulse-level control combined with virtual \(R_Z\) frame updates.
+Implement an RX(pi/4) rotation using pulse-level control combined with virtual RZ frame updates.
 
 
 
