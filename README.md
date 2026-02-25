@@ -4,6 +4,7 @@ Quantum Computing uses the properties of quantum systems to perform operations u
 <br>
 On this course, we'll learn how Qmio physically implements its quantum gates through microwave pulses. Starting from the superconducting qubit formulation, and understanding how pulses perform these operations, we'll see how to develop experiments at pulse-level in Qmio with the OpenPulse grammar from OpenQASM.  
 
+### [Link to web format course](https://achavert.github.io/qmio-openpulse/)
 
 ## Setup
 First, to access the Qmio CPD nodes at CESGA (through a @qmio.cesga.es account) type:
