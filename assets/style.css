@@ -43,22 +43,22 @@ body {
   background: #07599C;
   color: white;
   padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 .header-inner {
   display: flex;
-  align-items: center;   
+  align-items: center;
   justify-content: space-between;
-}
-
-.site-title {
-  margin: 0;
+  max-width: 1400px;
+  margin: auto;
 }
 
 .site-title a {
   color: white;
   text-decoration: none;
   font-size: 1.6rem;
+  font-weight: 600;
 }
 
 .nav-links {
