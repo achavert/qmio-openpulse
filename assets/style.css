@@ -108,20 +108,19 @@ body {
     max-width: 100%;
 }
 
-/* 2. The Sidebar: Fixed width on the left */
 .sidebar {
-    width: 250px;       /* Adjust width as needed */
-    flex-shrink: 0;     /* Prevents sidebar from squishing */
-    
-    /* Make it stick to the top of the screen while scrolling */
-    position: sticky; 
-    top: 20px;          /* Distance from top of browser window */
-    max-height: 90vh;   /* Prevent it from being taller than screen */
-    overflow-y: auto;   /* Scroll inside sidebar if list is too long */
-    
-    /* Visual styling for the links */
-    border-right: 1px solid #eaeaea;
-    /*padding-right: 15px;*/
+  width: 260px;
+  flex-shrink: 0;
+
+  position: sticky;
+  top: 20px;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
 }
 
 /* Remove default bullet points and style links */
