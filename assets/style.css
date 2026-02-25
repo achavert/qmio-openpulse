@@ -59,6 +59,8 @@ p {
 }
 
 /* underline only for title */
+
+
 .site-title a::after {
   content: "";
   display: block;
@@ -67,6 +69,8 @@ p {
   background: rgba(255,255,255,0.85);
   margin-top: 6px;
   border-radius: 2px;
+  height: 4px;
+  opacity: 0.9;
 }
 
 .site-title {
