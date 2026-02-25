@@ -164,9 +164,10 @@ body {
 
 /* Ensure iframe fits perfectly */
 #notebook-frame {
-    width: 100%;
-    height: 100vh; /* Adjust or use JS to resize automatically */
-    border: none;
+  width: 100%;
+  height: 100vh;
+  border: none;
+  border-radius: 8px;
 }
 
 /* Mobile Responsive: Stack them on small screens */
