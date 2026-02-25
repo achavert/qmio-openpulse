@@ -40,10 +40,10 @@ body {
 
 /*------------ Top Navigation Bar --------------*/
 .site-header {
-  background: #07599C;
+  background: linear-gradient(135deg, #07599C, #0d66af);
   color: white;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 1.2rem 2rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
 .header-inner {
@@ -70,6 +70,8 @@ body {
 .site-title a:hover {
   opacity: 0.9;
 }
+
+
 
 .nav-links {
   margin-top: 0.6rem;
