@@ -62,22 +62,23 @@ body {
 }
 
 .nav-links {
-  margin-top: 0.75rem;
-  margin-left: 0.75rem;
+  margin-top: 0.6rem;
   display: flex;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .nav-links a {
-  color: white;
+  color: rgba(255,255,255,0.9);
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  padding: 3px 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
 }
 
 .nav-links a:hover {
-  text-decoration: underline;
+  border-bottom: 2px solid white;
 }
-
 .site-logos {
   display: flex;
   align-items: center;
