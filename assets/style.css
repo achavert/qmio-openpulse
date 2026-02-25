@@ -136,16 +136,17 @@ body {
 }
 
 .sidebar a {
-    text-decoration: none;
-    color: #0366d6; /* GitHub Blue */
-    font-size: 14px;
-    display: block;
-    padding: 5px;
-    border-radius: 4px;
+  text-decoration: none;
+  color: #0d66af;
+  font-size: 14px;
+  display: block;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
 }
 
 .sidebar a:hover {
-    background-color: #abcdf0;
+  background-color: #e8f2fb;
 }
 
 .notebook-content {
