@@ -244,3 +244,11 @@ p {
 }
 
 
+
+hr {
+  border: none;
+  height: 2px;
+  margin: 3rem 0 2rem 0;
+  background: linear-gradient(to right, transparent, #0d66af, transparent);
+}
+
